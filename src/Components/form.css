@@ -28,14 +28,15 @@
   grid-column: 1/3;
 }
 
-.description {
+.form-profile-container > .description {
   grid-column: 1/3;
   grid-row: 2/3;
   display: flex;
-  margin-left: 10px;
+  padding: var(--main-padding);
 }
 
-.description > textarea {
+textarea {
+  padding: 5px;
   width: 550px;
   height: 100px;
 }
@@ -70,6 +71,13 @@
   border-radius: var(--main-border-radius);
   margin-bottom: var(--main-margin-bottom);
   align-items: center;
+}
+
+.form-experience-container > .description {
+  grid-column: 1/3;
+  grid-row: 5/6;
+  display: flex;
+  padding: var(--main-padding);
 }
 
 .form-experience-container > button,

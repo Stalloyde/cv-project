@@ -128,6 +128,13 @@ class Form extends React.Component {
           <TextInput label='City:' />
           <DateInput label='Start Date:' />
           <DateInput label='End Date:' />
+          <label className='description'>
+            Summary:
+            <textarea
+              placeholder='Insert key achievements/roles here'
+              maxLength={350}
+            ></textarea>
+          </label>
           <button>Add</button>
         </div>
 
