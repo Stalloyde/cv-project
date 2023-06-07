@@ -32,7 +32,7 @@ class DateInput extends React.Component {
   }
 }
 
-class TechStack extends React.Component {
+class TechStackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { techStack: [], currentTech: { text: '', id: '' } };
@@ -47,10 +47,13 @@ class TechStack extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      techStack: this.state.techStack.concat(this.state.currentTech),
-      currentTech: { text: '', id: '' },
-    });
+
+    if (this.state.currentTech.text) {
+      this.setState({
+        techStack: this.state.techStack.concat(this.state.currentTech),
+        currentTech: { text: '', id: '' },
+      });
+    }
   }
 
   handleRemove(e) {
@@ -98,6 +101,61 @@ class TechStack extends React.Component {
   }
 }
 
+class ExperienceForm extends React.Component {
+  render() {
+    return (
+      <div className='form-experience-container'>
+        <h1>Professional Experience</h1>
+        <TextInput label='Position:' />
+        <TextInput label='Company:' />
+        <TextInput label='City:' />
+        <DateInput label='Start Date:' />
+        <DateInput label='End Date:' />
+        <label className='description'>
+          Summary:
+          <textarea
+            placeholder='Insert key achievements/roles here'
+            maxLength={350}
+          ></textarea>
+        </label>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class EducationForm extends React.Component {
+  render() {
+    return (
+      <div className='form-education-container'>
+        <h1>Education</h1>
+        <TextInput label='University:' />
+        <TextInput label='City:' />
+        <div className='input-container'>
+          <label>
+            Level of Course:
+            <select>
+              <option value='doctorate'>Doctorate (Phd/EdD)</option>
+              <option value='professional'>
+                Professional Degree(MD/DDS/JD)
+              </option>
+              <option value='masters'>Masters degree (MA/MS/ MEng)</option>
+              <option value='bachelors'>Bachelor's degree (BA/BSc)</option>
+              <option value='associates'>Associate's degree (AA/AS)</option>
+              <option value='college'>Some college, but no degree</option>
+              <option value='secondary'>High school, diploma or GED</option>
+            </select>
+          </label>
+        </div>
+        <TextInput label='Degree:' />
+        <DateInput label='Start Date:' />
+        <DateInput label='End Date:' />
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 class Form extends React.Component {
   render() {
     return (
@@ -121,50 +179,14 @@ class Form extends React.Component {
           <TextInput label='LinkedIn:' />
         </div>
 
-        <div className='form-experience-container'>
-          <h1>Professional Experience</h1>
-          <TextInput label='Position:' />
-          <TextInput label='Company:' />
-          <TextInput label='City:' />
-          <DateInput label='Start Date:' />
-          <DateInput label='End Date:' />
-          <label className='description'>
-            Summary:
-            <textarea
-              placeholder='Insert key achievements/roles here'
-              maxLength={350}
-            ></textarea>
-          </label>
-          <button>Add</button>
-        </div>
+        <ExperienceForm>
+          <button OnClick={this.handleAddExperience}>Add</button>
+        </ExperienceForm>
+        <TechStackForm />
 
-        <TechStack />
-
-        <div className='form-education-container'>
-          <h1>Education</h1>
-          <TextInput label='University:' />
-          <TextInput label='City:' />
-          <div className='input-container'>
-            <label>
-              Level of Course:
-              <select>
-                <option value='doctorate'>Doctorate (Phd/EdD)</option>
-                <option value='professional'>
-                  Professional Degree(MD/DDS/JD)
-                </option>
-                <option value='masters'>Masters degree (MA/MS/ MEng)</option>
-                <option value='bachelors'>Bachelor's degree (BA/BSc)</option>
-                <option value='associates'>Associate's degree (AA/AS)</option>
-                <option value='college'>Some college, but no degree</option>
-                <option value='secondary'>High school, diploma or GED</option>
-              </select>
-            </label>
-          </div>
-          <TextInput label='Degree:' />
-          <DateInput label='Start Date:' />
-          <DateInput label='End Date:' />
-          <button>Add</button>
-        </div>
+        <EducationForm>
+          <button OnClick={this.handleAddEducation}>Add</button>
+        </EducationForm>
       </div>
     );
   }
