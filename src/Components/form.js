@@ -38,6 +38,7 @@ class TechStack extends React.Component {
     this.state = { techStack: [], currentTech: { text: '', id: '' } };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleChange(e) {
@@ -50,6 +51,14 @@ class TechStack extends React.Component {
       techStack: this.state.techStack.concat(this.state.currentTech),
       currentTech: { text: '', id: '' },
     });
+  }
+
+  handleRemove(e) {
+    const updatedTechStack = this.state.techStack.filter(
+      (item) => item.id !== e.target.id
+    );
+
+    this.setState({ techStack: updatedTechStack });
   }
 
   render() {
@@ -72,7 +81,13 @@ class TechStack extends React.Component {
               {this.state.techStack.map((item) => (
                 <li key={item.id} id={item.id}>
                   {item.text}
-                  <button className='remove-stack-btn'>Remove</button>
+                  <button
+                    id={item.id}
+                    className='remove-stack-btn'
+                    onClick={this.handleRemove}
+                  >
+                    Remove
+                  </button>
                 </li>
               ))}
             </ul>
