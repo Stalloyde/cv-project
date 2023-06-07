@@ -2,7 +2,7 @@
   --main-display: grid;
   --main-padding: 10px;
   --main-outline: 1px solid gray;
-  --main-border-radius: 10px;
+  --main-border-radius: 5px;
   --main-margin-bottom: 10px;
 }
 
@@ -89,9 +89,9 @@
 }
 
 .input-container {
-  padding: var(--main-padding);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: var(--main-padding);
 }
 
 input {
