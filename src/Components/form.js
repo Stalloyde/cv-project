@@ -1,5 +1,6 @@
 import React from 'react';
 import './form.css';
+import uniqid from 'uniqid';
 
 class TextInput extends React.Component {
   render() {
@@ -34,20 +35,20 @@ class DateInput extends React.Component {
 class TechStack extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { techStack: [], currentTech: '' };
+    this.state = { techStack: [], currentTech: { text: '', id: '' } };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ currentTech: e.target.value });
+    this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.setState({
       techStack: this.state.techStack.concat(this.state.currentTech),
-      currentTech: '',
+      currentTech: { text: '', id: '' },
     });
   }
 
@@ -59,18 +60,18 @@ class TechStack extends React.Component {
           <label>
             <input
               type='text'
-              value={this.state.currentTech}
+              value={this.state.currentTech.text}
               onChange={this.handleChange}
             ></input>
           </label>
 
           <input type='submit' value='Add'></input>
 
-          {this.state.techStack.length > 0 && (
+          {this.state.techStack && (
             <ul>
               {this.state.techStack.map((item) => (
-                <li>
-                  {item}
+                <li key={item.id}>
+                  {item.text}
                   <button className='remove-stack-btn'>Remove</button>
                 </li>
               ))}
