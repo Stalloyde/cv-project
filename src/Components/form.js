@@ -70,7 +70,7 @@ class TechStack extends React.Component {
           {this.state.techStack && (
             <ul>
               {this.state.techStack.map((item) => (
-                <li key={item.id}>
+                <li key={item.id} id={item.id}>
                   {item.text}
                   <button className='remove-stack-btn'>Remove</button>
                 </li>
