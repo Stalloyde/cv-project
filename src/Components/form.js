@@ -66,7 +66,7 @@ class TechStack extends React.Component {
 
           <input type='submit' value='Add'></input>
 
-          {this.state.techStack.length > 0 ? (
+          {this.state.techStack.length > 0 && (
             <ul>
               {this.state.techStack.map((item) => (
                 <li>
@@ -74,13 +74,6 @@ class TechStack extends React.Component {
                   <button className='remove-stack-btn'>Remove</button>
                 </li>
               ))}
-            </ul>
-          ) : (
-            <ul>
-              <li>
-                List of Added technology
-                <button className='remove-stack-btn'>Remove</button>
-              </li>
             </ul>
           )}
         </form>
