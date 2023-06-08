@@ -57,6 +57,10 @@ textarea {
   height: fit-content;
   width: fit-content;
   margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.767);
+  color: white;
+  font-weight: bold;
+  border-radius: var(--main-border-radius);
 }
 
 .remove-stack-btn {
@@ -129,4 +133,14 @@ button {
   width: 75px;
   height: 35px;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.767);
+  color: white;
+  font-weight: bold;
+  border-radius: var(--main-border-radius);
+}
+
+button:hover,
+input:hover,
+select:hover {
+  cursor: pointer;
 }

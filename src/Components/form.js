@@ -49,10 +49,10 @@ class TechStackForm extends React.Component {
     e.preventDefault();
 
     if (this.state.currentTech.text) {
-      this.setState({
-        techStack: this.state.techStack.concat(this.state.currentTech),
+      this.setState((prevState) => ({
+        techStack: prevState.techStack.concat(prevState.currentTech),
         currentTech: { text: '', id: '' },
-      });
+      }));
     }
   }
 
@@ -100,6 +100,17 @@ class TechStackForm extends React.Component {
 }
 
 class ExperienceInputs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove() {
+    const { onRemoveExperience, experiences, id } = this.props;
+    const updatedExperiences = experiences.filter((item) => item.id !== id);
+    onRemoveExperience(updatedExperiences);
+  }
+
   render() {
     return (
       <div className='form-experience-inputs-container' id={this.props.id}>
@@ -116,7 +127,9 @@ class ExperienceInputs extends React.Component {
           ></textarea>
         </label>
         <div className='remove-btn'>
-          <button onClick={this.handleRemove}> Remove </button>
+          <button onClick={this.handleRemove} id={this.props.id}>
+            Remove
+          </button>
         </div>
       </div>
     );
@@ -124,6 +137,17 @@ class ExperienceInputs extends React.Component {
 }
 
 class EducationInputs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove() {
+    const { onRemoveEducation, educations, id } = this.props;
+    const updatedEducations = educations.filter((item) => item.id !== id);
+    onRemoveEducation(updatedEducations);
+  }
+
   render() {
     return (
       <div className='form-education-inputs-container'>
@@ -145,11 +169,13 @@ class EducationInputs extends React.Component {
             </select>
           </label>
         </div>
-        <TextInput label='Degree:' />
         <DateInput label='Start Date:' />
+        <TextInput label='Degree:' />
         <DateInput label='End Date:' />
         <div className='remove-btn'>
-          <button onClick={this.handleRemove}> Remove </button>
+          <button onClick={this.handleRemove} id={this.props.id}>
+            Remove
+          </button>
         </div>
       </div>
     );
@@ -167,6 +193,8 @@ class Form extends React.Component {
     };
     this.handleAddExperience = this.handleAddExperience.bind(this);
     this.handleAddEducation = this.handleAddEducation.bind(this);
+    this.onRemoveExperience = this.onRemoveExperience.bind(this);
+    this.onRemoveEducation = this.onRemoveEducation.bind(this);
   }
 
   handleAddExperience() {
@@ -175,10 +203,10 @@ class Form extends React.Component {
       id: uniqid(),
     };
 
-    this.setState({
+    this.setState((prevState) => ({
       experience: newExperience,
-      experiences: this.state.experiences.concat(newExperience),
-    });
+      experiences: prevState.experiences.concat(newExperience),
+    }));
   }
 
   handleAddEducation() {
@@ -187,13 +215,29 @@ class Form extends React.Component {
       id: uniqid(),
     };
 
-    this.setState({
+    this.setState((prevState) => ({
       education: newEducation,
-      educations: this.state.educations.concat(newEducation),
-    });
+      educations: prevState.educations.concat(newEducation),
+    }));
+  }
+
+  onRemoveExperience(updatedExperiences) {
+    this.setState((prevState) => ({
+      experience: '',
+      experiences: updatedExperiences,
+    }));
+  }
+
+  onRemoveEducation(updatedEducations) {
+    this.setState((prevState) => ({
+      education: '',
+      educations: updatedEducations,
+    }));
   }
 
   render() {
+    const { experience, experiences, education, educations } = this.state;
+
     return (
       <div>
         <div className='form-profile-container'>
@@ -222,16 +266,28 @@ class Form extends React.Component {
 
         <div className='form-experience-container'>
           <h1>Professional Experiences</h1>
-          {this.state.experiences.map((item) => (
-            <ExperienceInputs key={item.id} id={item.id} />
+          {experiences.map((item) => (
+            <ExperienceInputs
+              key={item.id}
+              id={item.id}
+              experience={experience}
+              experiences={experiences}
+              onRemoveExperience={this.onRemoveExperience}
+            />
           ))}
           <button onClick={this.handleAddExperience}>Add Experience</button>
         </div>
 
         <div className='form-education-container'>
           <h1>Education</h1>
-          {this.state.educations.map((item) => (
-            <EducationInputs key={item.id} id={item.id} />
+          {educations.map((item) => (
+            <EducationInputs
+              key={item.id}
+              id={item.id}
+              education={education}
+              educations={educations}
+              onRemoveEducation={this.onRemoveEducation}
+            />
           ))}
           <button onClick={this.handleAddEducation}>Add Education</button>
         </div>
