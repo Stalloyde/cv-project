@@ -102,7 +102,7 @@ class TechStackForm extends React.Component {
 class ExperienceInputs extends React.Component {
   render() {
     return (
-      <div className='form-experience-inputs-container'>
+      <div className='form-experience-inputs-container' id={this.props.id}>
         <TextInput label='Position:' />
         <TextInput label='Company:' />
         <TextInput label='City:' />
@@ -116,7 +116,7 @@ class ExperienceInputs extends React.Component {
           ></textarea>
         </label>
         <div className='remove-btn'>
-          <button> Remove </button>
+          <button onClick={this.handleRemove}> Remove </button>
         </div>
       </div>
     );
@@ -149,7 +149,7 @@ class EducationInputs extends React.Component {
         <DateInput label='Start Date:' />
         <DateInput label='End Date:' />
         <div className='remove-btn'>
-          <button> Remove </button>
+          <button onClick={this.handleRemove}> Remove </button>
         </div>
       </div>
     );
@@ -159,34 +159,38 @@ class EducationInputs extends React.Component {
 class Form extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      experiences: [],
+      experience: { count: 1, id: uniqid() },
+      education: { count: 1, id: uniqid() },
+      educations: [],
+    };
     this.handleAddExperience = this.handleAddExperience.bind(this);
-    // this.state = {
-    //   experience: {
-    //     position: '',
-    //     company: '',
-    //     city: '',
-    //     startDate: '',
-    //     endDate: '',
-    //     summary: '',
-    //   },
-    //   experienceList: [],
-    //   education: {
-    //     university: '',
-    //     city: '',
-    //     levelOfCourse: '',
-    //     degree: '',
-    //     startDate: '',
-    //     endDate: '',
-    //   },
-    //   educationList: [],
-    // };
+    this.handleAddEducation = this.handleAddEducation.bind(this);
   }
 
   handleAddExperience() {
+    const newExperience = {
+      count: this.state.experience.count + 1,
+      id: uniqid(),
+    };
+
     this.setState({
-      experience: this.state.experience.concat(this.state.experience),
+      experience: newExperience,
+      experiences: this.state.experiences.concat(newExperience),
     });
-    console.log(this.state.experience);
+  }
+
+  handleAddEducation() {
+    const newEducation = {
+      count: this.state.education.count + 1,
+      id: uniqid(),
+    };
+
+    this.setState({
+      education: newEducation,
+      educations: this.state.educations.concat(newEducation),
+    });
   }
 
   render() {
@@ -218,15 +222,17 @@ class Form extends React.Component {
 
         <div className='form-experience-container'>
           <h1>Professional Experiences</h1>
-          <ExperienceInputs />
-          <ExperienceInputs />
+          {this.state.experiences.map((item) => (
+            <ExperienceInputs key={item.id} id={item.id} />
+          ))}
           <button onClick={this.handleAddExperience}>Add Experience</button>
         </div>
 
         <div className='form-education-container'>
           <h1>Education</h1>
-          <EducationInputs />
-          <EducationInputs />
+          {this.state.educations.map((item) => (
+            <EducationInputs key={item.id} id={item.id} />
+          ))}
           <button onClick={this.handleAddEducation}>Add Education</button>
         </div>
       </div>
