@@ -3,6 +3,15 @@ import './form.css';
 import uniqid from 'uniqid';
 
 class TextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    alert(e.target.value);
+  }
+
   render() {
     const { label } = this.props;
 
@@ -10,7 +19,7 @@ class TextInput extends React.Component {
       <div className='input-container'>
         <label>
           {label}
-          <input type='text'></input>
+          <input type='text' onChange={this.handleChange}></input>
         </label>
       </div>
     );
@@ -169,8 +178,8 @@ class EducationInputs extends React.Component {
             </select>
           </label>
         </div>
-        <DateInput label='Start Date:' />
         <TextInput label='Degree:' />
+        <DateInput label='Start Date:' />
         <DateInput label='End Date:' />
         <div className='remove-btn'>
           <button onClick={this.handleRemove} id={this.props.id}>
@@ -186,9 +195,37 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      profile: {
+        firstName: '',
+        lastName: '',
+        currentPositiion: '',
+        email: '',
+        contactNumber: '',
+        github: '',
+        portfolio: '',
+        linkedin: '',
+      },
       experiences: [],
-      experience: { count: 1, id: uniqid() },
-      education: { count: 1, id: uniqid() },
+      experience: {
+        count: 1,
+        id: uniqid(),
+        profile: '',
+        company: '',
+        city: '',
+        startDate: '',
+        endDate: '',
+        summary: '',
+      },
+      education: {
+        count: 1,
+        id: uniqid(),
+        university: '',
+        city: '',
+        levelOfCourse: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+      },
       educations: [],
     };
     this.handleAddExperience = this.handleAddExperience.bind(this);
@@ -239,7 +276,7 @@ class Form extends React.Component {
     const { experience, experiences, education, educations } = this.state;
 
     return (
-      <div>
+      <div className='form-main-container'>
         <div className='form-profile-container'>
           <h1>Profile</h1>
           <label className='description'>
