@@ -11,26 +11,26 @@ class Preview extends React.Component {
           <div> Summary</div>
         </div>
 
-        <div class='preview-content-container'>
-          <div class='side-content-container'>
+        <div className='preview-content-container'>
+          <div className='side-content-container'>
             <div className='preview-contact-info-container'>
-              <div class='contact-info'>
+              <div className='contact-info'>
                 <h2> Email </h2>
                 asdqwdqwdqwdqwdqwdqwd
               </div>
-              <div class='contact-info'>
+              <div className='contact-info'>
                 <h2> Contact Number </h2>
                 asfqfqwfqwfqw
               </div>
-              <div class='contact-info'>
+              <div className='contact-info'>
                 <h2> Github</h2>
                 <a href=''>test</a>
               </div>
-              <div class='contact-info'>
+              <div className='contact-info'>
                 <h2> Portfolio </h2>
                 <a href=''>test</a>
               </div>
-              <div class='contact-info'>
+              <div className='contact-info'>
                 <h2> LinkedIn</h2>
                 <a href=''>test</a>
               </div>
@@ -40,7 +40,7 @@ class Preview extends React.Component {
             </div>
           </div>
 
-          <div class='main-content-container'>
+          <div className='main-content-container'>
             <div className='preview-experience-container'>
               <h1>Professional Experiences</h1>
               <h3>start and End date</h3>
