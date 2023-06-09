@@ -1,6 +1,5 @@
 import React from 'react';
 import './form.css';
-import uniqid from 'uniqid';
 
 class TextInput extends React.Component {
   constructor(props) {
@@ -44,52 +43,36 @@ class DateInput extends React.Component {
 class TechStackForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { techStack: [], currentTech: { text: '', id: '' } };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    if (this.state.currentTech.text) {
-      this.setState((prevState) => ({
-        techStack: prevState.techStack.concat(prevState.currentTech),
-        currentTech: { text: '', id: '' },
-      }));
-    }
-  }
-
   handleRemove(e) {
-    const updatedTechStack = this.state.techStack.filter(
+    const { onRemoveTech, techStack } = this.props;
+    const updatedTechStack = techStack.filter(
       (item) => item.id !== e.target.id
     );
-
-    this.setState({ techStack: updatedTechStack });
+    onRemoveTech(updatedTechStack);
   }
 
   render() {
+    const { handleChange, handleSubmit, currentTech, techStack } = this.props;
+
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           <input
             type='text'
-            value={this.state.currentTech.text}
-            onChange={this.handleChange}
+            value={currentTech.text}
+            onChange={handleChange}
             placeholder='Insert proficient technology here'
           ></input>
         </label>
 
         <input type='submit' value='Add'></input>
 
-        {this.state.techStack && (
+        {techStack && (
           <ul>
-            {this.state.techStack.map((item) => (
+            {techStack.map((item) => (
               <li key={item.id} id={item.id}>
                 {item.text}
                 <button
@@ -194,6 +177,8 @@ class EducationInputs extends React.Component {
 class Form extends React.Component {
   render() {
     const {
+      currentTech,
+      techStack,
       experience,
       experiences,
       education,
@@ -202,6 +187,9 @@ class Form extends React.Component {
       handleAddEducation,
       onRemoveExperience,
       onRemoveEducation,
+      onRemoveTech,
+      handleChange,
+      handleSubmit,
     } = this.props;
 
     return (
@@ -227,7 +215,13 @@ class Form extends React.Component {
 
         <div className='form-tech-stack-container'>
           <h1>Technology Stack</h1>
-          <TechStackForm />
+          <TechStackForm
+            currentTech={currentTech}
+            techStack={techStack}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            onRemoveTech={onRemoveTech}
+          />
         </div>
 
         <div className='form-experience-container'>
