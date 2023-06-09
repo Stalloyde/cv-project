@@ -18,6 +18,8 @@ class App extends React.Component {
         portfolio: '',
         linkedin: '',
       },
+      techStack: [],
+      currentTech: { text: '', id: '' },
       experiences: [],
       experience: {
         count: 1,
@@ -29,6 +31,7 @@ class App extends React.Component {
         endDate: '',
         summary: '',
       },
+      educations: [],
       education: {
         count: 1,
         id: uniqid(),
@@ -39,12 +42,29 @@ class App extends React.Component {
         startDate: '',
         endDate: '',
       },
-      educations: [],
     };
     this.handleAddExperience = this.handleAddExperience.bind(this);
     this.handleAddEducation = this.handleAddEducation.bind(this);
     this.onRemoveExperience = this.onRemoveExperience.bind(this);
     this.onRemoveEducation = this.onRemoveEducation.bind(this);
+    this.onRemoveTech = this.onRemoveTech.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    if (this.state.currentTech.text) {
+      this.setState((prevState) => ({
+        techStack: prevState.techStack.concat(prevState.currentTech),
+        currentTech: { text: '', id: '' },
+      }));
+    }
   }
 
   handleAddExperience() {
@@ -85,12 +105,27 @@ class App extends React.Component {
     }));
   }
 
+  onRemoveTech(updatedTechStack) {
+    this.setState((prevState) => ({
+      techStack: updatedTechStack,
+    }));
+  }
+
   render() {
-    const { experience, experiences, education, educations } = this.state;
+    const {
+      currentTech,
+      techStack,
+      experience,
+      experiences,
+      education,
+      educations,
+    } = this.state;
 
     return (
       <div className='main-container'>
         <Form
+          currentTech={currentTech}
+          techStack={techStack}
           experience={experience}
           experiences={experiences}
           education={education}
@@ -99,6 +134,9 @@ class App extends React.Component {
           handleAddExperience={this.handleAddExperience}
           onRemoveEducation={this.onRemoveEducation}
           onRemoveExperience={this.onRemoveExperience}
+          onRemoveTech={this.onRemoveTech}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
         />
         <Preview
           experience={experience}
