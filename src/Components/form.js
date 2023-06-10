@@ -67,17 +67,19 @@ class TechStackForm extends React.Component {
         <input type='submit' value='Add'></input>
 
         {techStack && (
-          <ul>
+          <ul className='tech-stack-container'>
             {techStack.map((item) => (
               <li key={item.id} id={item.id}>
-                {item.text}
-                <button
-                  id={item.id}
-                  className='remove-stack-btn'
-                  onClick={this.handleRemove}
-                >
-                  Remove
-                </button>
+                <div>{item.text}</div>
+                <div>
+                  <button
+                    id={item.id}
+                    className='remove-stack-btn'
+                    onClick={this.handleRemove}
+                  >
+                    Remove
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
