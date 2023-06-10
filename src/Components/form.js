@@ -2,23 +2,18 @@ import React from 'react';
 import './form.css';
 
 class TextInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    alert(e.target.value);
-  }
-
   render() {
-    const { label } = this.props;
+    const { label, id, handleProfileInputChange } = this.props;
 
     return (
       <div className='input-container'>
         <label>
           {label}
-          <input type='text' onChange={this.handleChange}></input>
+          <input
+            type='text'
+            id={id}
+            onChange={handleProfileInputChange}
+          ></input>
         </label>
       </div>
     );
@@ -55,7 +50,8 @@ class TechStackForm extends React.Component {
   }
 
   render() {
-    const { handleChange, handleSubmit, currentTech, techStack } = this.props;
+    const { handleTechInputChange, handleSubmit, currentTech, techStack } =
+      this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -63,7 +59,7 @@ class TechStackForm extends React.Component {
           <input
             type='text'
             value={currentTech.text}
-            onChange={handleChange}
+            onChange={handleTechInputChange}
             placeholder='Insert proficient technology here'
           ></input>
         </label>
@@ -104,24 +100,25 @@ class ExperienceInputs extends React.Component {
   }
 
   render() {
+    const { id } = this.props;
+
     return (
-      <div className='form-experience-inputs-container' id={this.props.id}>
-        <TextInput label='Position:' />
-        <TextInput label='Company:' />
-        <TextInput label='City:' />
-        <DateInput label='Start Date:' />
-        <DateInput label='End Date:' />
+      <div className='form-experience-inputs-container'>
+        <TextInput label='Position:' id={`position-${id}`} />
+        <TextInput label='Company:' id={`company-${id}`} />
+        <TextInput label='City:' id={`city-${id}`} />
+        <DateInput label='Start Date:' id={`startDate-${id}`} />
+        <DateInput label='End Date:' id={`endDate-${id}`} />
         <label className='description'>
           Summary:
           <textarea
             placeholder='Insert key achievements/roles here'
             maxLength={350}
+            id={`description-${id}`}
           ></textarea>
         </label>
         <div className='remove-btn'>
-          <button onClick={this.handleRemove} id={this.props.id}>
-            Remove
-          </button>
+          <button onClick={this.handleRemove}>Remove</button>
         </div>
       </div>
     );
@@ -141,33 +138,45 @@ class EducationInputs extends React.Component {
   }
 
   render() {
+    const { id } = this.props;
+
     return (
       <div className='form-education-inputs-container'>
-        <TextInput label='University:' />
-        <TextInput label='City:' />
+        <TextInput label='University:' id={`university-${id}`} />
+        <TextInput label='City:' id={`city-${id}`} />
         <div className='input-container'>
           <label>
             Level of Course:
             <select>
-              <option value='doctorate'>Doctorate (Phd/EdD)</option>
-              <option value='professional'>
+              <option value='doctorate' id={`doctorate-${id}`}>
+                Doctorate (Phd/EdD)
+              </option>
+              <option value='professional' id={`professional-${id}`}>
                 Professional Degree(MD/DDS/JD)
               </option>
-              <option value='masters'>Masters degree (MA/MS/ MEng)</option>
-              <option value='bachelors'>Bachelor's degree (BA/BSc)</option>
-              <option value='associates'>Associate's degree (AA/AS)</option>
-              <option value='college'>Some college, but no degree</option>
-              <option value='secondary'>High school, diploma or GED</option>
+              <option value='masters' id={`masters-${id}`}>
+                Masters degree (MA/MS/ MEng)
+              </option>
+              <option value='bachelors' id={`bachelors-${id}`}>
+                Bachelor's degree (BA/BSc)
+              </option>
+              <option value='associates' id={`associates-${id}`}>
+                Associate's degree (AA/AS)
+              </option>
+              <option value='college' id={`college-${id}`}>
+                Some college, but no degree
+              </option>
+              <option value='secondary' id={`secondary-${id}`}>
+                High school, diploma or GED
+              </option>
             </select>
           </label>
         </div>
-        <TextInput label='Degree:' />
-        <DateInput label='Start Date:' />
-        <DateInput label='End Date:' />
+        <TextInput label='Degree:' id={`degree-${id}`} />
+        <DateInput label='Start Date:' id={`startDate-${id}`} />
+        <DateInput label='End Date:' id={`endDate-${id}`} />
         <div className='remove-btn'>
-          <button onClick={this.handleRemove} id={this.props.id}>
-            Remove
-          </button>
+          <button onClick={this.handleRemove}>Remove</button>
         </div>
       </div>
     );
@@ -188,7 +197,8 @@ class Form extends React.Component {
       onRemoveExperience,
       onRemoveEducation,
       onRemoveTech,
-      handleChange,
+      handleProfileInputChange,
+      handleTechInputChange,
       handleSubmit,
     } = this.props;
 
@@ -199,18 +209,52 @@ class Form extends React.Component {
           <label className='description'>
             Summary:
             <textarea
+              id='summary'
               placeholder='Insert short bio here'
               maxLength={250}
+              onChange={handleProfileInputChange}
             ></textarea>
           </label>
-          <TextInput label='First Name:' />
-          <TextInput label='Last Name:' />
-          <TextInput label='Current Position:' />
-          <TextInput label='Email:' />
-          <TextInput label='Contact Number:' />
-          <TextInput label='Github:' />
-          <TextInput label='Portfolio Site:' />
-          <TextInput label='LinkedIn:' />
+          <TextInput
+            label='First Name:'
+            id='firstName'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Last Name:'
+            id='lastName'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Current Position:'
+            id='currentPosition'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Email:'
+            id='email'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Contact Number:'
+            id='contactNumber'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Github:'
+            id='github'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='Portfolio Site:'
+            id='portfolio'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            label='LinkedIn:'
+            id='linkedin'
+            handleProfileInputChange={handleProfileInputChange}
+          />
         </div>
 
         <div className='form-tech-stack-container'>
@@ -218,7 +262,7 @@ class Form extends React.Component {
           <TechStackForm
             currentTech={currentTech}
             techStack={techStack}
-            handleChange={handleChange}
+            handleTechInputChange={handleTechInputChange}
             handleSubmit={handleSubmit}
             onRemoveTech={onRemoveTech}
           />

@@ -17,6 +17,7 @@ class App extends React.Component {
         github: '',
         portfolio: '',
         linkedin: '',
+        summary: '',
       },
       techStack: [],
       currentTech: { text: '', id: '' },
@@ -48,11 +49,51 @@ class App extends React.Component {
     this.onRemoveExperience = this.onRemoveExperience.bind(this);
     this.onRemoveEducation = this.onRemoveEducation.bind(this);
     this.onRemoveTech = this.onRemoveTech.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleProfileInputChange = this.handleProfileInputChange.bind(this);
+    this.handleTechInputChange = this.handleTechInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
+  handleProfileInputChange(e) {
+    this.setState((prevState) => ({
+      profile: {
+        firstName:
+          e.target.id === 'firstName'
+            ? e.target.value
+            : prevState.profile.firstName,
+        lastName:
+          e.target.id === 'lastName'
+            ? e.target.value
+            : prevState.profile.lastName,
+        currentPosition:
+          e.target.id === 'currentPosition'
+            ? e.target.value
+            : prevState.profile.currentPosition,
+        email:
+          e.target.id === 'email' ? e.target.value : prevState.profile.email,
+        contactNumber:
+          e.target.id === 'contactNumber'
+            ? e.target.value
+            : prevState.profile.contactNumber,
+        github:
+          e.target.id === 'github' ? e.target.value : prevState.profile.github,
+        portfolio:
+          e.target.id === 'portfolio'
+            ? e.target.value
+            : prevState.profile.portfolio,
+        linkedin:
+          e.target.id === 'linkedin'
+            ? e.target.value
+            : prevState.profile.linkedin,
+        summary:
+          e.target.id === 'summary'
+            ? e.target.value
+            : prevState.profile.summary,
+      },
+    }));
+  }
+
+  handleTechInputChange(e) {
     this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
   }
 
@@ -113,6 +154,7 @@ class App extends React.Component {
 
   render() {
     const {
+      profile,
       currentTech,
       techStack,
       experience,
@@ -124,6 +166,7 @@ class App extends React.Component {
     return (
       <div className='main-container'>
         <Form
+          profile={profile}
           currentTech={currentTech}
           techStack={techStack}
           experience={experience}
@@ -135,10 +178,14 @@ class App extends React.Component {
           onRemoveEducation={this.onRemoveEducation}
           onRemoveExperience={this.onRemoveExperience}
           onRemoveTech={this.onRemoveTech}
-          handleChange={this.handleChange}
+          handleProfileInputChange={this.handleProfileInputChange}
+          handleTechInputChange={this.handleTechInputChange}
           handleSubmit={this.handleSubmit}
         />
         <Preview
+          profile={profile}
+          currentTech={currentTech}
+          techStack={techStack}
           experience={experience}
           experiences={experiences}
           education={education}

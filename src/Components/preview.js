@@ -3,12 +3,16 @@ import './preview.css';
 
 class Preview extends React.Component {
   render() {
+    const { profile } = this.props;
+
     return (
       <div className='preview-main-container'>
         <div className='preview-profile-container'>
-          <h1> Name </h1>
-          <h2> Current Position </h2>
-          <div> Summary</div>
+          <h1>
+            {profile.firstName} {profile.lastName}
+          </h1>
+          <h2> {profile.currentPosition} </h2>
+          <div>{profile.summary}</div>
         </div>
 
         <div className='preview-content-container'>
@@ -16,23 +20,23 @@ class Preview extends React.Component {
             <div className='preview-contact-info-container'>
               <div className='contact-info'>
                 <h2> Email </h2>
-                asdqwdqwdqwdqwdqwdqwd
+                {profile.email}
               </div>
               <div className='contact-info'>
                 <h2> Contact Number </h2>
-                asfqfqwfqwfqw
+                {profile.contactNumber}
               </div>
               <div className='contact-info'>
-                <h2> Github</h2>
-                <a href=''>test</a>
+                <h2> Github </h2>
+                <a href=''>{profile.github}</a>
               </div>
               <div className='contact-info'>
                 <h2> Portfolio </h2>
-                <a href=''>test</a>
+                <a href=''>{profile.portfolio}</a>
               </div>
               <div className='contact-info'>
-                <h2> LinkedIn</h2>
-                <a href=''>test</a>
+                <h2> LinkedIn </h2>
+                <a href=''>{profile.linkedin}</a>
               </div>
             </div>
             <div className='preview-tech-stack-container'>
