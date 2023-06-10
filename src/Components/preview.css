@@ -34,6 +34,7 @@
 
 a {
   color: white;
+  text-decoration: none;
 }
 
 .main-content-container {
@@ -52,4 +53,13 @@ a {
   border-radius: var(--main-border-radius);
   outline: var(--main-outline);
   border-bottom: var(--main-margin-bottom);
+}
+
+.contact-info > h2,
+.tech-stack-info > h2 {
+  border-bottom: 1px solid white;
+}
+
+li {
+  list-style-type: circle;
 }

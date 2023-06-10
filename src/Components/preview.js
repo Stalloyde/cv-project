@@ -3,7 +3,7 @@ import './preview.css';
 
 class Preview extends React.Component {
   render() {
-    const { profile } = this.props;
+    const { profile, techStack } = this.props;
 
     return (
       <div className='preview-main-container'>
@@ -20,11 +20,11 @@ class Preview extends React.Component {
             <div className='preview-contact-info-container'>
               <div className='contact-info'>
                 <h2> Email </h2>
-                {profile.email}
+                <p>{profile.email}</p>
               </div>
               <div className='contact-info'>
                 <h2> Contact Number </h2>
-                {profile.contactNumber}
+                <p>{profile.contactNumber}</p>
               </div>
               <div className='contact-info'>
                 <h2> Github </h2>
@@ -38,9 +38,14 @@ class Preview extends React.Component {
                 <h2> LinkedIn </h2>
                 <a href=''>{profile.linkedin}</a>
               </div>
-            </div>
-            <div className='preview-tech-stack-container'>
-              <h2> Tech Stack </h2>
+              <div className='tech-stack-info'>
+                <h2> Tech Stack </h2>
+                <p>
+                  {techStack.map((item) => (
+                    <li key={item.id}> {item.text}</li>
+                  ))}
+                </p>
+              </div>
             </div>
           </div>
 
