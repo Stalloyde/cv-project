@@ -23,9 +23,8 @@ class App extends React.Component {
       currentTech: { text: '', id: '' },
       experiences: [],
       experience: {
-        count: 1,
         id: uniqid(),
-        profile: '',
+        position: '',
         company: '',
         city: '',
         startDate: '',
@@ -34,7 +33,6 @@ class App extends React.Component {
       },
       educations: [],
       education: {
-        count: 1,
         id: uniqid(),
         university: '',
         city: '',
@@ -51,6 +49,10 @@ class App extends React.Component {
     this.onRemoveTech = this.onRemoveTech.bind(this);
     this.handleProfileInputChange = this.handleProfileInputChange.bind(this);
     this.handleTechInputChange = this.handleTechInputChange.bind(this);
+    this.handleExperienceInputChange =
+      this.handleExperienceInputChange.bind(this);
+    // this.handleEducationInputChange =
+    //   this.handleEducationInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -93,6 +95,43 @@ class App extends React.Component {
     }));
   }
 
+  handleExperienceInputChange(e) {
+    const updatedExperiences = this.state.experiences.map((item) => {
+      if (item.id === e.target.parentNode.parentNode.parentNode.id) {
+        return {
+          id: item.id,
+          position:
+            e.target.id === `position-${item.id}`
+              ? e.target.value
+              : item.position,
+          company:
+            e.target.id === `company-${item.id}`
+              ? e.target.value
+              : item.company,
+          city: e.target.id === `city-${item.id}` ? e.target.value : item.city,
+          startDate:
+            e.target.id === `startDate-${item.id}`
+              ? e.target.value
+              : item.startDate,
+          endDate:
+            e.target.id === `endDate-${item.id}`
+              ? e.target.value
+              : item.endDate,
+          summary:
+            e.target.id === `description-${item.id}`
+              ? e.target.value
+              : item.summary,
+        };
+      } else {
+        return item;
+      }
+    });
+    this.setState((prevState) => ({
+      experiences: updatedExperiences,
+    }));
+    console.log(this.state.experiences);
+  }
+
   handleTechInputChange(e) {
     this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
   }
@@ -110,8 +149,13 @@ class App extends React.Component {
 
   handleAddExperience() {
     const newExperience = {
-      count: this.state.experience.count + 1,
       id: uniqid(),
+      position: '',
+      company: '',
+      city: '',
+      startDate: '',
+      endDate: '',
+      summary: '',
     };
 
     this.setState((prevState) => ({
@@ -122,7 +166,6 @@ class App extends React.Component {
 
   handleAddEducation() {
     const newEducation = {
-      count: this.state.education.count + 1,
       id: uniqid(),
     };
 
@@ -179,6 +222,8 @@ class App extends React.Component {
           onRemoveExperience={this.onRemoveExperience}
           onRemoveTech={this.onRemoveTech}
           handleProfileInputChange={this.handleProfileInputChange}
+          handleExperienceInputChange={this.handleExperienceInputChange}
+          handleEducationInputChange={this.handleEducationInputChange}
           handleTechInputChange={this.handleTechInputChange}
           handleSubmit={this.handleSubmit}
         />
