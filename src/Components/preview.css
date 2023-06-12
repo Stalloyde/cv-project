@@ -14,7 +14,7 @@
   display: grid;
   background-color: rgba(0, 0, 0, 0.767);
   margin: 10px;
-  grid-template-rows: 0.3fr 1fr;
+  grid-template-rows: 200px 1fr;
 }
 
 .preview-content-container {
@@ -62,4 +62,8 @@ a {
 
 li {
   list-style-type: circle;
+}
+
+.preview-experience-content {
+  border-bottom: 1px solid black;
 }

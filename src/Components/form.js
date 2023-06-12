@@ -2,8 +2,26 @@ import React from 'react';
 import './form.css';
 
 class TextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.determineInputChange = this.determineInputChange.bind(this);
+  }
+
+  determineInputChange(e) {
+    const { handleProfileInputChange, handleExperienceInputChange, className } =
+      this.props;
+
+    if (className === 'profile-input') {
+      handleProfileInputChange(e);
+    }
+
+    if (className === 'experience-input') {
+      handleExperienceInputChange(e);
+    }
+  }
+
   render() {
-    const { label, id, handleProfileInputChange } = this.props;
+    const { label, id } = this.props;
 
     return (
       <div className='input-container'>
@@ -12,7 +30,7 @@ class TextInput extends React.Component {
           <input
             type='text'
             id={id}
-            onChange={handleProfileInputChange}
+            onChange={this.determineInputChange}
           ></input>
         </label>
       </div>
@@ -21,14 +39,39 @@ class TextInput extends React.Component {
 }
 
 class DateInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.determineDateChange = this.determineDateChange.bind(this);
+  }
+
+  determineDateChange(e) {
+    const {
+      handleExperienceInputChange,
+      handleEducationInputChange,
+      className,
+    } = this.props;
+
+    if (className === 'education-input') {
+      handleEducationInputChange(e);
+    }
+
+    if (className === 'experience-input') {
+      handleExperienceInputChange(e);
+    }
+  }
+
   render() {
-    const { label } = this.props;
+    const { label, id } = this.props;
 
     return (
       <div className='input-container'>
         <label>
           {label}
-          <input type='date'></input>
+          <input
+            type='date'
+            id={id}
+            onChange={this.determineDateChange}
+          ></input>
         </label>
       </div>
     );
@@ -102,23 +145,53 @@ class ExperienceInputs extends React.Component {
   }
 
   render() {
-    const { id } = this.props;
+    const { handleExperienceInputChange, id } = this.props;
 
     return (
-      <div className='form-experience-inputs-container'>
-        <TextInput label='Position:' id={`position-${id}`} />
-        <TextInput label='Company:' id={`company-${id}`} />
-        <TextInput label='City:' id={`city-${id}`} />
-        <DateInput label='Start Date:' id={`startDate-${id}`} />
-        <DateInput label='End Date:' id={`endDate-${id}`} />
-        <label className='description'>
-          Summary:
-          <textarea
-            placeholder='Insert key achievements/roles here'
-            maxLength={350}
-            id={`description-${id}`}
-          ></textarea>
-        </label>
+      <div className='form-experience-inputs-container' id={id}>
+        <TextInput
+          label='Position:'
+          className='experience-input'
+          id={`position-${id}`}
+          key={id}
+          handleExperienceInputChange={handleExperienceInputChange}
+        />
+        <TextInput
+          label='Company:'
+          className='experience-input'
+          id={`company-${id}`}
+          handleExperienceInputChange={handleExperienceInputChange}
+        />
+        <TextInput
+          label='City:'
+          className='experience-input'
+          id={`city-${id}`}
+          handleExperienceInputChange={handleExperienceInputChange}
+        />
+        <DateInput
+          label='Start Date:'
+          className='experience-input'
+          id={`startDate-${id}`}
+          handleExperienceInputChange={handleExperienceInputChange}
+        />
+        <DateInput
+          label='End Date:'
+          className='experience-input'
+          id={`endDate-${id}`}
+          handleExperienceInputChange={handleExperienceInputChange}
+        />
+        <div className='description'>
+          <label>
+            Summary:
+            <textarea
+              placeholder='Insert key achievements/roles here'
+              maxLength={350}
+              className='experience-input'
+              id={`description-${id}`}
+              onChange={handleExperienceInputChange}
+            ></textarea>
+          </label>
+        </div>
         <div className='remove-btn'>
           <button onClick={this.handleRemove}>Remove</button>
         </div>
@@ -200,6 +273,8 @@ class Form extends React.Component {
       onRemoveEducation,
       onRemoveTech,
       handleProfileInputChange,
+      handleExperienceInputChange,
+      handleEducationInputChange,
       handleTechInputChange,
       handleSubmit,
     } = this.props;
@@ -211,6 +286,7 @@ class Form extends React.Component {
           <label className='description'>
             Summary:
             <textarea
+              className='profile-input'
               id='summary'
               placeholder='Insert short bio here'
               maxLength={250}
@@ -218,41 +294,49 @@ class Form extends React.Component {
             ></textarea>
           </label>
           <TextInput
+            className='profile-input'
             label='First Name:'
             id='firstName'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Last Name:'
             id='lastName'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Current Position:'
             id='currentPosition'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Email:'
             id='email'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Contact Number:'
             id='contactNumber'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Github:'
             id='github'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='Portfolio Site:'
             id='portfolio'
             handleProfileInputChange={handleProfileInputChange}
           />
           <TextInput
+            className='profile-input'
             label='LinkedIn:'
             id='linkedin'
             handleProfileInputChange={handleProfileInputChange}
@@ -279,6 +363,7 @@ class Form extends React.Component {
               experience={experience}
               experiences={experiences}
               onRemoveExperience={onRemoveExperience}
+              handleExperienceInputChange={handleExperienceInputChange}
             />
           ))}
           <button onClick={handleAddExperience}>Add Experience</button>

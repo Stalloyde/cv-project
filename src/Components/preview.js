@@ -1,9 +1,47 @@
 import React from 'react';
 import './preview.css';
 
+class PreviewExperience extends React.Component {
+  render() {
+    const { experiences } = this.props;
+    return (
+      <>
+        {experiences.map((item) => (
+          <div
+            className='preview-experience-content'
+            id={`experience-${item.id}`}
+            key={`experience-${item.id}`}
+          >
+            <h2>
+              {item.company} | {item.city}
+            </h2>
+            <h2>{item.position}</h2>
+            <h3>
+              {item.startDate} - {item.endDate}
+            </h3>
+            <div>{item.summary}</div>
+          </div>
+        ))}
+      </>
+    );
+  }
+}
+
+class PreviewEducation extends React.Component {
+  render() {
+    return (
+      <>
+        <h3>start and End date</h3>
+        <h2>University | City</h2>
+        <h2>Level of Course | Degree</h2>
+      </>
+    );
+  }
+}
+
 class Preview extends React.Component {
   render() {
-    const { profile, techStack } = this.props;
+    const { profile, techStack, experiences, educations } = this.props;
 
     return (
       <div className='preview-main-container'>
@@ -52,16 +90,19 @@ class Preview extends React.Component {
           <div className='main-content-container'>
             <div className='preview-experience-container'>
               <h1>Professional Experiences</h1>
-              <h3>start and End date</h3>
-              <h2>Company | City </h2>
-              <h2>Position</h2>
-              <div>Summary</div>
+              <PreviewExperience experiences={experiences} />
             </div>
             <div className='preview-education-container'>
               <h1>Education</h1>
-              <h3>start and End date</h3>
-              <h2>University | City</h2>
-              <h2>Level of Course | Degree</h2>
+              {educations.map((item) => (
+                <div
+                  className='preview-education-content'
+                  id={`education-${item.id}`}
+                  key={`education-${item.id}`}
+                >
+                  <PreviewEducation />
+                </div>
+              ))}
             </div>
           </div>
         </div>
