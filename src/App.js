@@ -130,7 +130,6 @@ class App extends React.Component {
     this.setState((prevState) => ({
       experiences: updatedExperiences,
     }));
-    console.log(this.state.experiences);
   }
 
   handleEducationInputChange(e) {
