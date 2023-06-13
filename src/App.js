@@ -3,6 +3,7 @@ import React from 'react';
 import Form from './Components/form';
 import Preview from './Components/preview';
 import uniqid from 'uniqid';
+import format from 'date-fns/format';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,10 +37,10 @@ class App extends React.Component {
         id: uniqid(),
         university: '',
         city: '',
-        levelOfCourse: '',
-        degree: '',
+        course: '',
         startDate: '',
         endDate: '',
+        summary: '',
       },
     };
     this.handleAddExperience = this.handleAddExperience.bind(this);
@@ -51,8 +52,8 @@ class App extends React.Component {
     this.handleTechInputChange = this.handleTechInputChange.bind(this);
     this.handleExperienceInputChange =
       this.handleExperienceInputChange.bind(this);
-    // this.handleEducationInputChange =
-    //   this.handleEducationInputChange.bind(this);
+    this.handleEducationInputChange =
+      this.handleEducationInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -111,11 +112,11 @@ class App extends React.Component {
           city: e.target.id === `city-${item.id}` ? e.target.value : item.city,
           startDate:
             e.target.id === `startDate-${item.id}`
-              ? e.target.value
+              ? format(new Date(e.target.value), 'MMM yyyy')
               : item.startDate,
           endDate:
             e.target.id === `endDate-${item.id}`
-              ? e.target.value
+              ? format(new Date(e.target.value), 'MMM yyyy')
               : item.endDate,
           summary:
             e.target.id === `description-${item.id}`
@@ -130,6 +131,40 @@ class App extends React.Component {
       experiences: updatedExperiences,
     }));
     console.log(this.state.experiences);
+  }
+
+  handleEducationInputChange(e) {
+    const updatedEducations = this.state.educations.map((item) => {
+      if (item.id === e.target.parentNode.parentNode.parentNode.id) {
+        return {
+          id: item.id,
+          university:
+            e.target.id === `university-${item.id}`
+              ? e.target.value
+              : item.university,
+          city: e.target.id === `city-${item.id}` ? e.target.value : item.city,
+          course:
+            e.target.id === `course-${item.id}` ? e.target.value : item.course,
+          startDate:
+            e.target.id === `startDate-${item.id}`
+              ? format(new Date(e.target.value), 'MMM yyyy')
+              : item.startDate,
+          endDate:
+            e.target.id === `endDate-${item.id}`
+              ? format(new Date(e.target.value), 'MMM yyyy')
+              : item.endDate,
+          summary:
+            e.target.id === `description-${item.id}`
+              ? e.target.value
+              : item.summary,
+        };
+      } else {
+        return item;
+      }
+    });
+    this.setState((prevState) => ({
+      educations: updatedEducations,
+    }));
   }
 
   handleTechInputChange(e) {
@@ -167,6 +202,12 @@ class App extends React.Component {
   handleAddEducation() {
     const newEducation = {
       id: uniqid(),
+      university: '',
+      city: '',
+      course: '',
+      startDate: '',
+      endDate: '',
+      summary: '',
     };
 
     this.setState((prevState) => ({
