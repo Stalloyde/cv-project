@@ -1,6 +1,5 @@
 import React from 'react';
 import './preview.css';
-import format from 'date-fns/format';
 
 class PreviewExperience extends React.Component {
   render() {
