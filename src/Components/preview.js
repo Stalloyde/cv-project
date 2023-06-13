@@ -1,5 +1,6 @@
 import React from 'react';
 import './preview.css';
+import format from 'date-fns/format';
 
 class PreviewExperience extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class PreviewExperience extends React.Component {
             <h3>
               {item.startDate} - {item.endDate}
             </h3>
-            <div>{item.summary}</div>
+            <div className='summary'>{item.summary}</div>
           </div>
         ))}
       </>
@@ -29,11 +30,25 @@ class PreviewExperience extends React.Component {
 
 class PreviewEducation extends React.Component {
   render() {
+    const { educations } = this.props;
     return (
       <>
-        <h3>start and End date</h3>
-        <h2>University | City</h2>
-        <h2>Level of Course | Degree</h2>
+        {educations.map((item) => (
+          <div
+            className='preview-education-content'
+            id={`education-${item.id}`}
+            key={`education-${item.id}`}
+          >
+            <h2>
+              {item.university} | {item.city}
+            </h2>
+            <h2>{item.course}</h2>
+            <h3>
+              {item.startDate} - {item.endDate}
+            </h3>
+            <div className='summary'>{item.summary}</div>
+          </div>
+        ))}
       </>
     );
   }
@@ -50,7 +65,7 @@ class Preview extends React.Component {
             {profile.firstName} {profile.lastName}
           </h1>
           <h2> {profile.currentPosition} </h2>
-          <div>{profile.summary}</div>
+          <div className='summary'>{profile.summary}</div>
         </div>
 
         <div className='preview-content-container'>
@@ -100,7 +115,7 @@ class Preview extends React.Component {
                   id={`education-${item.id}`}
                   key={`education-${item.id}`}
                 >
-                  <PreviewEducation />
+                  <PreviewEducation educations={educations} />
                 </div>
               ))}
             </div>
