@@ -8,8 +8,12 @@ class TextInput extends React.Component {
   }
 
   determineInputChange(e) {
-    const { handleProfileInputChange, handleExperienceInputChange, className } =
-      this.props;
+    const {
+      handleProfileInputChange,
+      handleExperienceInputChange,
+      handleEducationInputChange,
+      className,
+    } = this.props;
 
     if (className === 'profile-input') {
       handleProfileInputChange(e);
@@ -17,6 +21,10 @@ class TextInput extends React.Component {
 
     if (className === 'experience-input') {
       handleExperienceInputChange(e);
+    }
+
+    if (className === 'education-input') {
+      handleEducationInputChange(e);
     }
   }
 
@@ -180,7 +188,7 @@ class ExperienceInputs extends React.Component {
           id={`endDate-${id}`}
           handleExperienceInputChange={handleExperienceInputChange}
         />
-        <div className='description'>
+        <div className='description input-container'>
           <label>
             Summary:
             <textarea
@@ -213,43 +221,53 @@ class EducationInputs extends React.Component {
   }
 
   render() {
-    const { id } = this.props;
+    const { handleEducationInputChange, id } = this.props;
 
     return (
-      <div className='form-education-inputs-container'>
-        <TextInput label='University:' id={`university-${id}`} />
-        <TextInput label='City:' id={`city-${id}`} />
-        <div className='input-container'>
+      <div className='form-education-inputs-container' id={id}>
+        <TextInput
+          label='University:'
+          id={`university-${id}`}
+          className='education-input'
+          handleEducationInputChange={handleEducationInputChange}
+        />
+        <TextInput
+          label='City:'
+          id={`city-${id}`}
+          className='education-input'
+          handleEducationInputChange={handleEducationInputChange}
+        />
+        <TextInput
+          label='Course:'
+          id={`course-${id}`}
+          className='education-input'
+          handleEducationInputChange={handleEducationInputChange}
+        />
+
+        <DateInput
+          label='Start Date:'
+          id={`startDate-${id}`}
+          className='education-input'
+          handleEducationInputChange={handleEducationInputChange}
+        />
+        <DateInput
+          label='End Date:'
+          id={`endDate-${id}`}
+          className='education-input'
+          handleEducationInputChange={handleEducationInputChange}
+        />
+        <div className='description input-container'>
           <label>
-            Level of Course:
-            <select>
-              <option value='doctorate' id={`doctorate-${id}`}>
-                Doctorate (Phd/EdD)
-              </option>
-              <option value='professional' id={`professional-${id}`}>
-                Professional Degree(MD/DDS/JD)
-              </option>
-              <option value='masters' id={`masters-${id}`}>
-                Masters degree (MA/MS/ MEng)
-              </option>
-              <option value='bachelors' id={`bachelors-${id}`}>
-                Bachelor's degree (BA/BSc)
-              </option>
-              <option value='associates' id={`associates-${id}`}>
-                Associate's degree (AA/AS)
-              </option>
-              <option value='college' id={`college-${id}`}>
-                Some college, but no degree
-              </option>
-              <option value='secondary' id={`secondary-${id}`}>
-                High school, diploma or GED
-              </option>
-            </select>
+            Summary:
+            <textarea
+              placeholder='Insert key achievements/roles here'
+              maxLength={350}
+              className='education-input'
+              id={`description-${id}`}
+              onChange={handleEducationInputChange}
+            ></textarea>
           </label>
         </div>
-        <TextInput label='Degree:' id={`degree-${id}`} />
-        <DateInput label='Start Date:' id={`startDate-${id}`} />
-        <DateInput label='End Date:' id={`endDate-${id}`} />
         <div className='remove-btn'>
           <button onClick={this.handleRemove}>Remove</button>
         </div>
@@ -283,16 +301,7 @@ class Form extends React.Component {
       <div className='form-main-container'>
         <div className='form-profile-container'>
           <h1>Profile</h1>
-          <label className='description'>
-            Summary:
-            <textarea
-              className='profile-input'
-              id='summary'
-              placeholder='Insert short bio here'
-              maxLength={250}
-              onChange={handleProfileInputChange}
-            ></textarea>
-          </label>
+
           <TextInput
             className='profile-input'
             label='First Name:'
@@ -341,6 +350,16 @@ class Form extends React.Component {
             id='linkedin'
             handleProfileInputChange={handleProfileInputChange}
           />
+          <label className='description input-container'>
+            Summary:
+            <textarea
+              className='profile-input'
+              id='summary'
+              placeholder='Insert short bio here'
+              maxLength={250}
+              onChange={handleProfileInputChange}
+            ></textarea>
+          </label>
         </div>
 
         <div className='form-tech-stack-container'>
@@ -378,6 +397,7 @@ class Form extends React.Component {
               education={education}
               educations={educations}
               onRemoveEducation={onRemoveEducation}
+              handleEducationInputChange={handleEducationInputChange}
             />
           ))}
           <button onClick={handleAddEducation}>Add Education</button>
