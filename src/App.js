@@ -1,63 +1,48 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Components/form';
 import Preview from './Components/preview';
 import uniqid from 'uniqid';
 import format from 'date-fns/format';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profile: {
-        firstName: '',
-        lastName: '',
-        currentPositiion: '',
-        email: '',
-        contactNumber: '',
-        github: '',
-        portfolio: '',
-        linkedin: '',
-        summary: '',
-      },
-      techStack: [],
-      currentTech: { text: '', id: '' },
-      experiences: [],
-      experience: {
-        id: uniqid(),
-        position: '',
-        company: '',
-        city: '',
-        startDate: '',
-        endDate: '',
-        summary: '',
-      },
-      educations: [],
-      education: {
-        id: uniqid(),
-        university: '',
-        city: '',
-        course: '',
-        startDate: '',
-        endDate: '',
-        summary: '',
-      },
-    };
-    this.handleAddExperience = this.handleAddExperience.bind(this);
-    this.handleAddEducation = this.handleAddEducation.bind(this);
-    this.onRemoveExperience = this.onRemoveExperience.bind(this);
-    this.onRemoveEducation = this.onRemoveEducation.bind(this);
-    this.onRemoveTech = this.onRemoveTech.bind(this);
-    this.handleProfileInputChange = this.handleProfileInputChange.bind(this);
-    this.handleTechInputChange = this.handleTechInputChange.bind(this);
-    this.handleExperienceInputChange =
-      this.handleExperienceInputChange.bind(this);
-    this.handleEducationInputChange =
-      this.handleEducationInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const App = () => {
+  const [profile, setProfile] = useState({
+    firstName: '',
+    lastName: '',
+    currentPositiion: '',
+    email: '',
+    contactNumber: '',
+    github: '',
+    portfolio: '',
+    linkedin: '',
+    summary: '',
+  });
 
-  handleProfileInputChange(e) {
+  const [techStack, setTechStack] = useState([]);
+  const [currentTech, setCurrentTech] = useState({ text: '', id: '' });
+  const [experiences, setExperiences] = useState([]);
+  const [experience, setExperience] = useState({
+    id: uniqid(),
+    position: '',
+    company: '',
+    city: '',
+    startDate: '',
+    endDate: '',
+    summary: '',
+  });
+
+  const [educations, setEducations] = useState([]);
+  const [education, setEducation] = useState({
+    id: uniqid(),
+    university: '',
+    city: '',
+    course: '',
+    startDate: '',
+    endDate: '',
+    summary: '',
+  });
+
+  const handleProfileInputChange = (e) => {
     this.setState((prevState) => ({
       profile: {
         firstName:
@@ -94,9 +79,9 @@ class App extends React.Component {
             : prevState.profile.summary,
       },
     }));
-  }
+  };
 
-  handleExperienceInputChange(e) {
+  const handleExperienceInputChange = (e) => {
     const updatedExperiences = this.state.experiences.map((item) => {
       if (item.id === e.target.parentNode.parentNode.parentNode.id) {
         return {
@@ -130,9 +115,9 @@ class App extends React.Component {
     this.setState((prevState) => ({
       experiences: updatedExperiences,
     }));
-  }
+  };
 
-  handleEducationInputChange(e) {
+  const handleEducationInputChange = (e) => {
     const updatedEducations = this.state.educations.map((item) => {
       if (item.id === e.target.parentNode.parentNode.parentNode.id) {
         return {
@@ -164,24 +149,22 @@ class App extends React.Component {
     this.setState((prevState) => ({
       educations: updatedEducations,
     }));
-  }
+  };
 
-  handleTechInputChange(e) {
-    this.setState({ currentTech: { text: e.target.value, id: uniqid() } });
-  }
+  const handleTechInputChange = (e) => {
+    setCurrentTech({ text: e.target.value, id: uniqid() });
+  };
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.currentTech.text) {
-      this.setState((prevState) => ({
-        techStack: prevState.techStack.concat(prevState.currentTech),
-        currentTech: { text: '', id: '' },
-      }));
+    if (currentTech.text) {
+      setTechStack(techStack.concat(currentTech));
+      setCurrentTech({ text: '', id: '' });
     }
-  }
+  };
 
-  handleAddExperience() {
+  const handleAddExperience = () => {
     const newExperience = {
       id: uniqid(),
       position: '',
@@ -196,9 +179,9 @@ class App extends React.Component {
       experience: newExperience,
       experiences: prevState.experiences.concat(newExperience),
     }));
-  }
+  };
 
-  handleAddEducation() {
+  const handleAddEducation = () => {
     const newEducation = {
       id: uniqid(),
       university: '',
@@ -213,72 +196,57 @@ class App extends React.Component {
       education: newEducation,
       educations: prevState.educations.concat(newEducation),
     }));
-  }
+  };
 
-  onRemoveExperience(updatedExperiences) {
+  const onRemoveExperience = (updatedExperiences) => {
     this.setState((prevState) => ({
       experience: '',
       experiences: updatedExperiences,
     }));
-  }
+  };
 
-  onRemoveEducation(updatedEducations) {
+  const onRemoveEducation = (updatedEducations) => {
     this.setState((prevState) => ({
       education: '',
       educations: updatedEducations,
     }));
-  }
+  };
 
-  onRemoveTech(updatedTechStack) {
-    this.setState((prevState) => ({
-      techStack: updatedTechStack,
-    }));
-  }
+  const onRemoveTech = (updatedTechStack) => {
+    setTechStack(updatedTechStack);
+  };
 
-  render() {
-    const {
-      profile,
-      currentTech,
-      techStack,
-      experience,
-      experiences,
-      education,
-      educations,
-    } = this.state;
-
-    return (
-      <div className='main-container'>
-        <Form
-          profile={profile}
-          currentTech={currentTech}
-          techStack={techStack}
-          experience={experience}
-          experiences={experiences}
-          education={education}
-          educations={educations}
-          handleAddEducation={this.handleAddEducation}
-          handleAddExperience={this.handleAddExperience}
-          onRemoveEducation={this.onRemoveEducation}
-          onRemoveExperience={this.onRemoveExperience}
-          onRemoveTech={this.onRemoveTech}
-          handleProfileInputChange={this.handleProfileInputChange}
-          handleExperienceInputChange={this.handleExperienceInputChange}
-          handleEducationInputChange={this.handleEducationInputChange}
-          handleTechInputChange={this.handleTechInputChange}
-          handleSubmit={this.handleSubmit}
-        />
-        <Preview
-          profile={profile}
-          currentTech={currentTech}
-          techStack={techStack}
-          experience={experience}
-          experiences={experiences}
-          education={education}
-          educations={educations}
-        />
-      </div>
-    );
-  }
-}
-
+  return (
+    <div className='main-container'>
+      <Form
+        profile={profile}
+        currentTech={currentTech}
+        techStack={techStack}
+        experience={experience}
+        experiences={experiences}
+        education={education}
+        educations={educations}
+        handleAddEducation={handleAddEducation}
+        handleAddExperience={handleAddExperience}
+        onRemoveEducation={onRemoveEducation}
+        onRemoveExperience={onRemoveExperience}
+        onRemoveTech={onRemoveTech}
+        handleProfileInputChange={handleProfileInputChange}
+        handleExperienceInputChange={handleExperienceInputChange}
+        handleEducationInputChange={handleEducationInputChange}
+        handleTechInputChange={handleTechInputChange}
+        handleSubmit={handleSubmit}
+      />
+      <Preview
+        profile={profile}
+        currentTech={currentTech}
+        techStack={techStack}
+        experience={experience}
+        experiences={experiences}
+        education={education}
+        educations={educations}
+      />
+    </div>
+  );
+};
 export default App;
