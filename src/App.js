@@ -9,7 +9,7 @@ const App = () => {
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
-    currentPositiion: '',
+    currentPosition: '',
     email: '',
     contactNumber: '',
     github: '',
@@ -43,42 +43,25 @@ const App = () => {
   });
 
   const handleProfileInputChange = (e) => {
-    this.setState((prevState) => ({
-      profile: {
-        firstName:
-          e.target.id === 'firstName'
-            ? e.target.value
-            : prevState.profile.firstName,
-        lastName:
-          e.target.id === 'lastName'
-            ? e.target.value
-            : prevState.profile.lastName,
-        currentPosition:
-          e.target.id === 'currentPosition'
-            ? e.target.value
-            : prevState.profile.currentPosition,
-        email:
-          e.target.id === 'email' ? e.target.value : prevState.profile.email,
-        contactNumber:
-          e.target.id === 'contactNumber'
-            ? e.target.value
-            : prevState.profile.contactNumber,
-        github:
-          e.target.id === 'github' ? e.target.value : prevState.profile.github,
-        portfolio:
-          e.target.id === 'portfolio'
-            ? e.target.value
-            : prevState.profile.portfolio,
-        linkedin:
-          e.target.id === 'linkedin'
-            ? e.target.value
-            : prevState.profile.linkedin,
-        summary:
-          e.target.id === 'summary'
-            ? e.target.value
-            : prevState.profile.summary,
-      },
-    }));
+    setProfile({
+      firstName:
+        e.target.id === 'firstName' ? e.target.value : profile.firstName,
+      lastName: e.target.id === 'lastName' ? e.target.value : profile.lastName,
+      currentPosition:
+        e.target.id === 'currentPosition'
+          ? e.target.value
+          : profile.currentPosition,
+      email: e.target.id === 'email' ? e.target.value : profile.email,
+      contactNumber:
+        e.target.id === 'contactNumber'
+          ? e.target.value
+          : profile.contactNumber,
+      github: e.target.id === 'github' ? e.target.value : profile.github,
+      portfolio:
+        e.target.id === 'portfolio' ? e.target.value : profile.portfolio,
+      linkedin: e.target.id === 'linkedin' ? e.target.value : profile.linkedin,
+      summary: e.target.id === 'summary' ? e.target.value : profile.summary,
+    });
   };
 
   const handleExperienceInputChange = (e) => {
