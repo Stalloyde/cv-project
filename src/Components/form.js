@@ -57,13 +57,15 @@ const DateInput = ({ label, id }) => {
     </div>
   );
 };
+
 const TechStackForm = ({
   handleTechInputChange,
   handleSubmit,
   currentTech,
   techStack,
+  onRemoveTech,
 }) => {
-  const handleRemove = (e, { onRemoveTech, techStack }) => {
+  const handleRemove = (e) => {
     const updatedTechStack = techStack.filter(
       (item) => item.id !== e.target.id
     );
