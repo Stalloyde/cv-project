@@ -1,3 +1,10 @@
+To use this repo:
+
+1. Clone repo to your local machine.
+2. Install dependencies by running:
+
+npm install -D babel-loader @babel/core @babel/preset-env webpack webpack webpack-cli --save-dev --save lodash --save-dev style-loader css-loader --save-dev csv-loader xml-loader toml yamljs json5 --save-dev --save-dev html-webpack-plugin --save-dev html-loader --save-dev jest
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
