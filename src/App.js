@@ -22,7 +22,7 @@ const App = () => {
   const [currentTech, setCurrentTech] = useState({ text: '', id: '' });
   const [experiences, setExperiences] = useState([]);
   const [experience, setExperience] = useState({
-    id: uniqid(),
+    id: '',
     position: '',
     company: '',
     city: '',
@@ -65,7 +65,7 @@ const App = () => {
   };
 
   const handleExperienceInputChange = (e) => {
-    const updatedExperiences = this.state.experiences.map((item) => {
+    const updatedExperiences = experiences.map((item) => {
       if (item.id === e.target.parentNode.parentNode.parentNode.id) {
         return {
           id: item.id,
@@ -95,13 +95,12 @@ const App = () => {
         return item;
       }
     });
-    this.setState((prevState) => ({
-      experiences: updatedExperiences,
-    }));
+
+    setExperiences(updatedExperiences);
   };
 
   const handleEducationInputChange = (e) => {
-    const updatedEducations = this.state.educations.map((item) => {
+    const updatedEducations = educations.map((item) => {
       if (item.id === e.target.parentNode.parentNode.parentNode.id) {
         return {
           id: item.id,
@@ -129,9 +128,7 @@ const App = () => {
         return item;
       }
     });
-    this.setState((prevState) => ({
-      educations: updatedEducations,
-    }));
+    setEducations(updatedEducations);
   };
 
   const handleTechInputChange = (e) => {
@@ -158,10 +155,8 @@ const App = () => {
       summary: '',
     };
 
-    this.setState((prevState) => ({
-      experience: newExperience,
-      experiences: prevState.experiences.concat(newExperience),
-    }));
+    setExperiences(experiences.concat(newExperience));
+    setExperience(newExperience);
   };
 
   const handleAddEducation = () => {
@@ -175,24 +170,36 @@ const App = () => {
       summary: '',
     };
 
-    this.setState((prevState) => ({
-      education: newEducation,
-      educations: prevState.educations.concat(newEducation),
-    }));
+    setEducations(educations.concat(newEducation));
+    setEducation(newEducation);
+    console.log(educations);
+    console.log(education);
   };
 
   const onRemoveExperience = (updatedExperiences) => {
-    this.setState((prevState) => ({
-      experience: '',
-      experiences: updatedExperiences,
-    }));
+    setExperience({
+      id: uniqid(),
+      position: '',
+      company: '',
+      city: '',
+      startDate: '',
+      endDate: '',
+      summary: '',
+    });
+    setExperiences(updatedExperiences);
   };
 
   const onRemoveEducation = (updatedEducations) => {
-    this.setState((prevState) => ({
-      education: '',
-      educations: updatedEducations,
-    }));
+    setEducations({
+      id: uniqid(),
+      university: '',
+      city: '',
+      course: '',
+      startDate: '',
+      endDate: '',
+      summary: '',
+    });
+    setEducations(updatedEducations);
   };
 
   const onRemoveTech = (updatedTechStack) => {

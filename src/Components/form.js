@@ -1,16 +1,15 @@
 import React from 'react';
 import './form.css';
 
-const TextInput = ({ label, id }) => {
-  const determineInputChange = (
-    e,
-    {
-      handleProfileInputChange,
-      handleExperienceInputChange,
-      handleEducationInputChange,
-      className,
-    }
-  ) => {
+const TextInput = ({
+  label,
+  id,
+  handleProfileInputChange,
+  handleExperienceInputChange,
+  handleEducationInputChange,
+  className,
+}) => {
+  const determineInputChange = (e) => {
     if (className === 'profile-input') {
       handleProfileInputChange(e);
     }
@@ -34,11 +33,14 @@ const TextInput = ({ label, id }) => {
   );
 };
 
-const DateInput = ({ label, id }) => {
-  const determineDateChange = (
-    e,
-    { handleExperienceInputChange, handleEducationInputChange, className }
-  ) => {
+const DateInput = ({
+  label,
+  id,
+  handleExperienceInputChange,
+  handleEducationInputChange,
+  className,
+}) => {
+  const determineDateChange = (e) => {
     if (className === 'education-input') {
       handleEducationInputChange(e);
     }
@@ -107,8 +109,13 @@ const TechStackForm = ({
   );
 };
 
-const ExperienceInputs = ({ handleExperienceInputChange, id }) => {
-  const handleRemove = ({ onRemoveExperience, experiences, id }) => {
+const ExperienceInputs = ({
+  handleExperienceInputChange,
+  experiences,
+  onRemoveExperience,
+  id,
+}) => {
+  const handleRemove = () => {
     const updatedExperiences = experiences.filter((item) => item.id !== id);
     onRemoveExperience(updatedExperiences);
   };
@@ -165,8 +172,13 @@ const ExperienceInputs = ({ handleExperienceInputChange, id }) => {
   );
 };
 
-const EducationInputs = ({ handleEducationInputChange, id }) => {
-  const handleRemove = ({ onRemoveEducation, educations, id }) => {
+const EducationInputs = ({
+  handleEducationInputChange,
+  id,
+  onRemoveEducation,
+  educations,
+}) => {
+  const handleRemove = () => {
     const updatedEducations = educations.filter((item) => item.id !== id);
     onRemoveEducation(updatedEducations);
   };
