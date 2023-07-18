@@ -1,110 +1,89 @@
-import React from 'react';
-import './preview.css';
-
-const PreviewExperience = ({ experiences }) => {
-  return (
-    <>
-      {experiences.map((item) => (
-        <div
-          className='preview-experience-content'
-          id={`experience-${item.id}`}
-          key={`experience-${item.id}`}
-        >
-          <h2>
-            {item.company} | {item.city}
-          </h2>
-          <h2>{item.position}</h2>
-          <h3>
-            {item.startDate} - {item.endDate}
-          </h3>
-          <div className='summary'>{item.summary}</div>
-        </div>
-      ))}
-    </>
-  );
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+require("./preview.css");
+var PreviewExperience = function (_a) {
+    var experiences = _a.experiences;
+    return (React.createElement(React.Fragment, null, experiences.map(function (item) {
+        if (item) {
+            return (React.createElement("div", { className: 'preview-experience-content', id: "experience-".concat(item.id), key: "experience-".concat(item.id) },
+                React.createElement("h2", null,
+                    item.company,
+                    " | ",
+                    item.city),
+                React.createElement("h2", null, item.position),
+                React.createElement("h3", null,
+                    React.createElement(React.Fragment, null,
+                        item.startDate,
+                        " - ",
+                        item.endDate)),
+                React.createElement("div", { className: 'summary' }, item.summary)));
+        }
+        return null;
+    })));
 };
-
-const PreviewEducation = ({ educations }) => {
-  return (
-    <>
-      {educations.map((item) => (
-        <div
-          className='preview-education-content'
-          id={`education-${item.id}`}
-          key={`education-${item.id}`}
-        >
-          <h2>
-            {item.university} | {item.city}
-          </h2>
-          <h2>{item.course}</h2>
-          <h3>
-            {item.startDate} - {item.endDate}
-          </h3>
-          <div className='summary'>{item.summary}</div>
-        </div>
-      ))}
-    </>
-  );
+var PreviewEducation = function (_a) {
+    var educations = _a.educations;
+    return (React.createElement(React.Fragment, null, educations.map(function (item) {
+        if (item) {
+            return (React.createElement("div", { className: 'preview-education-content', id: "education-".concat(item.id), key: "education-".concat(item.id) },
+                React.createElement("h2", null,
+                    item.university,
+                    " | ",
+                    item.city),
+                React.createElement("h2", null, item.course),
+                React.createElement("h3", null,
+                    React.createElement(React.Fragment, null,
+                        item.startDate,
+                        " - ",
+                        item.endDate)),
+                React.createElement("div", { className: 'summary' }, item.summary)));
+        }
+        return null;
+    })));
 };
-
-const Preview = ({ profile, techStack, experiences, educations }) => {
-  return (
-    <div className='preview-main-container'>
-      <div className='preview-profile-container'>
-        <h1>
-          {profile.firstName} {profile.lastName}
-        </h1>
-        <h2> {profile.currentPosition} </h2>
-        <div className='summary'>{profile.summary}</div>
-      </div>
-
-      <div className='preview-content-container'>
-        <div className='side-content-container'>
-          <div className='preview-contact-info-container'>
-            <div className='contact-info'>
-              <h2> Email </h2>
-              <p>{profile.email}</p>
-            </div>
-            <div className='contact-info'>
-              <h2> Contact Number </h2>
-              <p>{profile.contactNumber}</p>
-            </div>
-            <div className='contact-info'>
-              <h2> Github </h2>
-              <a href=''>{profile.github}</a>
-            </div>
-            <div className='contact-info'>
-              <h2> Portfolio </h2>
-              <a href=''>{profile.portfolio}</a>
-            </div>
-            <div className='contact-info'>
-              <h2> LinkedIn </h2>
-              <a href=''>{profile.linkedin}</a>
-            </div>
-            <div className='tech-stack-info'>
-              <h2> Tech Stack </h2>
-              <p>
-                {techStack.map((item) => (
-                  <li key={item.id}> {item.text}</li>
-                ))}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className='main-content-container'>
-          <div className='preview-experience-container'>
-            <h1>Professional Experiences</h1>
-            <PreviewExperience experiences={experiences} />
-          </div>
-          <div className='preview-education-container'>
-            <h1>Education</h1>
-            <PreviewEducation educations={educations} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+var Preview = function (_a) {
+    var profile = _a.profile, techStack = _a.techStack, experiences = _a.experiences, educations = _a.educations;
+    return (React.createElement("div", { className: 'preview-main-container' },
+        React.createElement("div", { className: 'preview-profile-container' },
+            React.createElement("h1", null,
+                profile.firstName,
+                " ",
+                profile.lastName),
+            React.createElement("h2", null,
+                " ",
+                profile.currentPosition,
+                " "),
+            React.createElement("div", { className: 'summary' }, profile.summary)),
+        React.createElement("div", { className: 'preview-content-container' },
+            React.createElement("div", { className: 'side-content-container' },
+                React.createElement("div", { className: 'preview-contact-info-container' },
+                    React.createElement("div", { className: 'contact-info' },
+                        React.createElement("h2", null, " Email "),
+                        React.createElement("p", null, profile.email)),
+                    React.createElement("div", { className: 'contact-info' },
+                        React.createElement("h2", null, " Contact Number "),
+                        React.createElement("p", null, profile.contactNumber)),
+                    React.createElement("div", { className: 'contact-info' },
+                        React.createElement("h2", null, " Github "),
+                        React.createElement("a", { href: '' }, profile.github)),
+                    React.createElement("div", { className: 'contact-info' },
+                        React.createElement("h2", null, " Portfolio "),
+                        React.createElement("a", { href: '' }, profile.portfolio)),
+                    React.createElement("div", { className: 'contact-info' },
+                        React.createElement("h2", null, " LinkedIn "),
+                        React.createElement("a", { href: '' }, profile.linkedin)),
+                    React.createElement("div", { className: 'tech-stack-info' },
+                        React.createElement("h2", null, " Tech Stack "),
+                        React.createElement("p", null, techStack.map(function (item) { return item && React.createElement("li", { key: item.id },
+                            " ",
+                            item.text); }))))),
+            React.createElement("div", { className: 'main-content-container' },
+                React.createElement("div", { className: 'preview-experience-container' },
+                    React.createElement("h1", null, "Professional Experiences"),
+                    React.createElement(PreviewExperience, { experiences: experiences })),
+                React.createElement("div", { className: 'preview-education-container' },
+                    React.createElement("h1", null, "Education"),
+                    React.createElement(PreviewEducation, { educations: educations }))))));
 };
-
-export default Preview;
+exports.default = Preview;
