@@ -425,7 +425,7 @@ const Form: React.FC<FormProps> = ({
         </label>
       </div>
 
-      <div className='form-tech-stack-czontainer'>
+      <div className='form-tech-stack-container'>
         <h1>Technology Stack</h1>
         <TechStackForm
           currentTech={currentTech}

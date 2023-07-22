@@ -121,7 +121,7 @@ var Form = function (_a) {
             React.createElement("label", { className: 'description input-container' },
                 "Summary:",
                 React.createElement("textarea", { className: 'profile-input', id: 'summary', placeholder: 'Insert short bio here', maxLength: 250, onChange: handleProfileInputChange }))),
-        React.createElement("div", { className: 'form-tech-stack-czontainer' },
+        React.createElement("div", { className: 'form-tech-stack-container' },
             React.createElement("h1", null, "Technology Stack"),
             React.createElement(TechStackForm, { currentTech: currentTech, techStack: techStack, handleTechInputChange: handleTechInputChange, handleSubmit: handleSubmit, onRemoveTech: onRemoveTech })),
         React.createElement("div", { className: 'form-experience-container' },
