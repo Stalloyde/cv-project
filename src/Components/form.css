@@ -4,15 +4,13 @@
 
 :root {
   --main-display: grid;
-  --main-padding: 10px;
+  --main-padding: 1rem;
   --main-outline: 1px solid rgba(0, 0, 0, 0.767);
-  --main-border-radius: 5px;
-  --main-margin-bottom: 15px;
+  --main-border-radius: 0.5rem;
+  --main-margin-bottom: 1.5rem;
 }
 
 .form-main-container {
-  display: grid;
-  grid-template-columns: 1fr;
   overflow-y: auto;
   height: 100vh;
 }
@@ -43,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   width: 80%;
-  height: 25px;
+  height: 2rem;
   list-style-type: square;
 }
 
@@ -74,19 +72,19 @@
 }
 
 textarea {
-  padding: 5px;
-  min-width: 450px;
-  height: 100px;
+  padding: var(--main-padding);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .form-tech-stack-container > form {
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 
 .form-tech-stack-container > form > input {
   width: 50px;
   height: 30px;
-  margin-left: 10px;
+  margin-left: 1rem;
   background-color: rgba(0, 0, 0, 0.767);
   color: white;
   font-weight: bold;
@@ -94,7 +92,7 @@ textarea {
 }
 
 .remove-stack-btn {
-  margin-left: 10px;
+  margin-left: 1rem;
   height: fit-content;
   width: fit-content;
 }
