@@ -80,10 +80,10 @@ var Preview = function (_a) {
                             item.text); }))))),
             React.createElement("section", { className: 'main-content-container' },
                 React.createElement("section", { className: 'preview-experience-container' },
-                    React.createElement("h1", null, "Professional Experiences"),
+                    React.createElement("h2", null, "Professional Experiences"),
                     React.createElement(PreviewExperience, { experiences: experiences })),
                 React.createElement("section", { className: 'preview-education-container' },
-                    React.createElement("h1", null, "Education"),
+                    React.createElement("h2", null, "Education"),
                     React.createElement(PreviewEducation, { educations: educations }))))));
 };
 exports.default = Preview;

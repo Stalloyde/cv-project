@@ -112,7 +112,7 @@ var Form = function (_a) {
     var currentTech = _a.currentTech, techStack = _a.techStack, experience = _a.experience, experiences = _a.experiences, education = _a.education, educations = _a.educations, handleAddExperience = _a.handleAddExperience, handleAddEducation = _a.handleAddEducation, onRemoveExperience = _a.onRemoveExperience, onRemoveEducation = _a.onRemoveEducation, onRemoveTech = _a.onRemoveTech, handleProfileInputChange = _a.handleProfileInputChange, handleExperienceInputChange = _a.handleExperienceInputChange, handleEducationInputChange = _a.handleEducationInputChange, handleTechInputChange = _a.handleTechInputChange, handleSubmit = _a.handleSubmit;
     return (React.createElement("main", null,
         React.createElement("section", { className: 'form-profile-container' },
-            React.createElement("h1", null, "Profile"),
+            React.createElement("h2", null, "Profile"),
             React.createElement("div", { className: 'form-profile-inputs-container' },
                 React.createElement(TextInput, { className: 'profile-input', label: 'First Name:', id: 'firstName', handleProfileInputChange: handleProfileInputChange }),
                 React.createElement(TextInput, { className: 'profile-input', label: 'Last Name:', id: 'lastName', handleProfileInputChange: handleProfileInputChange }),
@@ -126,16 +126,16 @@ var Form = function (_a) {
                     "Summary:",
                     React.createElement("textarea", { className: 'profile-input', id: 'summary', placeholder: 'Insert short bio here', maxLength: 250, onChange: handleProfileInputChange })))),
         React.createElement("section", { className: 'form-tech-stack-container' },
-            React.createElement("h1", null, "Technology Stack"),
+            React.createElement("h2", null, "Technology Stack"),
             React.createElement(TechStackForm, { currentTech: currentTech, techStack: techStack, handleTechInputChange: handleTechInputChange, handleSubmit: handleSubmit, onRemoveTech: onRemoveTech })),
         React.createElement("section", { className: 'form-experience-container' },
-            React.createElement("h1", null, "Professional Experiences"),
+            React.createElement("h2", null, "Professional Experiences"),
             experiences.map(function (item) {
                 return item && (React.createElement(ExperienceInputs, { key: item.id, id: item.id, experience: experience, experiences: experiences, onRemoveExperience: onRemoveExperience, handleExperienceInputChange: handleExperienceInputChange }));
             }),
             React.createElement("button", { onClick: handleAddExperience }, "Add Experience")),
         React.createElement("section", { className: 'form-education-container' },
-            React.createElement("h1", null, "Education"),
+            React.createElement("h2", null, "Education"),
             educations.map(function (item) {
                 return item && (React.createElement(EducationInputs, { key: item.id, id: item.id, education: education, educations: educations, onRemoveEducation: onRemoveEducation, handleEducationInputChange: handleEducationInputChange }));
             }),
