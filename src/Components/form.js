@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 require("./form.css");
+//SEPARATION INTERFACES FROM COMPONENTS
+//SEPARATION INTERFACES FROM COMPONENTS
+//SEPARATION INTERFACES FROM COMPONENTS
 var TextInput = function (_a) {
     var label = _a.label, id = _a.id, handleProfileInputChange = _a.handleProfileInputChange, handleExperienceInputChange = _a.handleExperienceInputChange, handleEducationInputChange = _a.handleEducationInputChange, className = _a.className;
     var determineInputChange = function (e) {
@@ -68,7 +71,7 @@ var ExperienceInputs = function (_a) {
         });
         onRemoveExperience(updatedExperiences);
     };
-    return (React.createElement("div", { className: 'form-experience-inputs-container', id: id },
+    return (React.createElement("section", { className: 'form-experience-inputs-container', id: id },
         React.createElement(TextInput, { label: 'Position:', className: 'experience-input', id: "position-".concat(id), key: id, handleExperienceInputChange: handleExperienceInputChange }),
         React.createElement(TextInput, { label: 'Company:', className: 'experience-input', id: "company-".concat(id), handleExperienceInputChange: handleExperienceInputChange }),
         React.createElement(TextInput, { label: 'City:', className: 'experience-input', id: "city-".concat(id), handleExperienceInputChange: handleExperienceInputChange }),
@@ -92,7 +95,7 @@ var EducationInputs = function (_a) {
         });
         onRemoveEducation(updatedEducations);
     };
-    return (React.createElement("div", { className: 'form-education-inputs-container', id: id },
+    return (React.createElement("section", { className: 'form-education-inputs-container', id: id },
         React.createElement(TextInput, { label: 'University:', id: "university-".concat(id), className: 'education-input', handleEducationInputChange: handleEducationInputChange }),
         React.createElement(TextInput, { label: 'City:', id: "city-".concat(id), className: 'education-input', handleEducationInputChange: handleEducationInputChange }),
         React.createElement(TextInput, { label: 'Course:', id: "course-".concat(id), className: 'education-input', handleEducationInputChange: handleEducationInputChange }),
@@ -107,8 +110,8 @@ var EducationInputs = function (_a) {
 };
 var Form = function (_a) {
     var currentTech = _a.currentTech, techStack = _a.techStack, experience = _a.experience, experiences = _a.experiences, education = _a.education, educations = _a.educations, handleAddExperience = _a.handleAddExperience, handleAddEducation = _a.handleAddEducation, onRemoveExperience = _a.onRemoveExperience, onRemoveEducation = _a.onRemoveEducation, onRemoveTech = _a.onRemoveTech, handleProfileInputChange = _a.handleProfileInputChange, handleExperienceInputChange = _a.handleExperienceInputChange, handleEducationInputChange = _a.handleEducationInputChange, handleTechInputChange = _a.handleTechInputChange, handleSubmit = _a.handleSubmit;
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: 'form-profile-container' },
+    return (React.createElement("main", null,
+        React.createElement("section", { className: 'form-profile-container' },
             React.createElement("h1", null, "Profile"),
             React.createElement("div", { className: 'form-profile-inputs-container' },
                 React.createElement(TextInput, { className: 'profile-input', label: 'First Name:', id: 'firstName', handleProfileInputChange: handleProfileInputChange }),
@@ -122,16 +125,16 @@ var Form = function (_a) {
                 React.createElement("label", { className: 'description input-container' },
                     "Summary:",
                     React.createElement("textarea", { className: 'profile-input', id: 'summary', placeholder: 'Insert short bio here', maxLength: 250, onChange: handleProfileInputChange })))),
-        React.createElement("div", { className: 'form-tech-stack-container' },
+        React.createElement("section", { className: 'form-tech-stack-container' },
             React.createElement("h1", null, "Technology Stack"),
             React.createElement(TechStackForm, { currentTech: currentTech, techStack: techStack, handleTechInputChange: handleTechInputChange, handleSubmit: handleSubmit, onRemoveTech: onRemoveTech })),
-        React.createElement("div", { className: 'form-experience-container' },
+        React.createElement("section", { className: 'form-experience-container' },
             React.createElement("h1", null, "Professional Experiences"),
             experiences.map(function (item) {
                 return item && (React.createElement(ExperienceInputs, { key: item.id, id: item.id, experience: experience, experiences: experiences, onRemoveExperience: onRemoveExperience, handleExperienceInputChange: handleExperienceInputChange }));
             }),
             React.createElement("button", { onClick: handleAddExperience }, "Add Experience")),
-        React.createElement("div", { className: 'form-education-container' },
+        React.createElement("section", { className: 'form-education-container' },
             React.createElement("h1", null, "Education"),
             educations.map(function (item) {
                 return item && (React.createElement(EducationInputs, { key: item.id, id: item.id, education: education, educations: educations, onRemoveEducation: onRemoveEducation, handleEducationInputChange: handleEducationInputChange }));

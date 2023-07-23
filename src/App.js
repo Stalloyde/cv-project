@@ -198,10 +198,10 @@ var App = function () {
     var onRemoveTech = function (updatedTechStack) {
         setTechStack(updatedTechStack);
     };
-    return (React.createElement("div", { className: 'main-container' },
-        React.createElement("div", { className: 'form-container' },
+    return (React.createElement("main", { className: 'main-container' },
+        React.createElement("section", { className: 'form-container' },
             React.createElement(form_1.default, { currentTech: currentTech, techStack: techStack, experience: experience, experiences: experiences, education: education, educations: educations, handleAddEducation: handleAddEducation, handleAddExperience: handleAddExperience, onRemoveEducation: onRemoveEducation, onRemoveExperience: onRemoveExperience, onRemoveTech: onRemoveTech, handleProfileInputChange: handleProfileInputChange, handleExperienceInputChange: handleExperienceInputChange, handleEducationInputChange: handleEducationInputChange, handleTechInputChange: handleTechInputChange, handleSubmit: handleSubmit })),
-        React.createElement("div", { className: 'preview-container' },
+        React.createElement("section", { className: 'preview-container' },
             React.createElement(preview_1.default, { profile: profile, currentTech: currentTech, techStack: techStack, experiences: experiences, educations: educations }))));
 };
 exports.default = App;
