@@ -10,7 +10,7 @@
   --main-margin-bottom: 1.5rem;
 }
 
-.main-container > div {
+.main-container > section {
   padding: var(--main-padding);
   border-radius: var(--main-border-radius);
 }
