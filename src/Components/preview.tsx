@@ -93,7 +93,7 @@ const Preview: React.FC<PreviewProps> = ({
   educations,
 }) => {
   return (
-    <div className='preview-main-container'>
+    <>
       <div className='preview-profile-container'>
         <h1>
           {profile.firstName} {profile.lastName}
@@ -147,7 +147,7 @@ const Preview: React.FC<PreviewProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

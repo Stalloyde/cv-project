@@ -44,7 +44,7 @@ var PreviewEducation = function (_a) {
 };
 var Preview = function (_a) {
     var profile = _a.profile, techStack = _a.techStack, experiences = _a.experiences, educations = _a.educations;
-    return (React.createElement("div", { className: 'preview-main-container' },
+    return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: 'preview-profile-container' },
             React.createElement("h1", null,
                 profile.firstName,

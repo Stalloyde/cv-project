@@ -362,7 +362,7 @@ const Form: React.FC<FormProps> = ({
   handleSubmit,
 }) => {
   return (
-    <div className='form-main-container'>
+    <>
       <div className='form-profile-container'>
         <h1>Profile</h1>
         <TextInput
@@ -471,7 +471,7 @@ const Form: React.FC<FormProps> = ({
         )}
         <button onClick={handleAddEducation}>Add Education</button>
       </div>
-    </div>
+    </>
   );
 };
 

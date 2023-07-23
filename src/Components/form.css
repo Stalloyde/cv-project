@@ -10,11 +10,6 @@
   --main-margin-bottom: 1.5rem;
 }
 
-.form-main-container {
-  overflow-y: auto;
-  height: 100vh;
-}
-
 .main-container > div {
   padding: var(--main-padding);
   border-radius: var(--main-border-radius);
@@ -24,7 +19,6 @@
 .form-tech-stack-container,
 .form-experience-container,
 .form-education-container {
-  display: var(--main-display);
   outline: var(--main-outline);
   padding: var(--main-padding);
   margin-bottom: var(--main-margin-bottom);
@@ -99,7 +93,6 @@ textarea {
 
 .form-experience-inputs-container,
 .form-education-inputs-container {
-  display: var(--main-display);
   padding: var(--main-padding);
   grid-template-columns: 1fr 1fr;
   outline: var(--main-outline);
@@ -123,8 +116,6 @@ textarea {
 }
 
 .input-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   padding: var(--main-padding);
 }
 

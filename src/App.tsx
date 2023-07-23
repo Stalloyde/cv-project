@@ -289,31 +289,35 @@ const App = () => {
 
   return (
     <div className='main-container'>
-      <Form
-        currentTech={currentTech}
-        techStack={techStack}
-        experience={experience}
-        experiences={experiences}
-        education={education}
-        educations={educations}
-        handleAddEducation={handleAddEducation}
-        handleAddExperience={handleAddExperience}
-        onRemoveEducation={onRemoveEducation}
-        onRemoveExperience={onRemoveExperience}
-        onRemoveTech={onRemoveTech}
-        handleProfileInputChange={handleProfileInputChange}
-        handleExperienceInputChange={handleExperienceInputChange}
-        handleEducationInputChange={handleEducationInputChange}
-        handleTechInputChange={handleTechInputChange}
-        handleSubmit={handleSubmit}
-      />
-      <Preview
-        profile={profile}
-        currentTech={currentTech}
-        techStack={techStack}
-        experiences={experiences}
-        educations={educations}
-      />
+      <div className='form-container'>
+        <Form
+          currentTech={currentTech}
+          techStack={techStack}
+          experience={experience}
+          experiences={experiences}
+          education={education}
+          educations={educations}
+          handleAddEducation={handleAddEducation}
+          handleAddExperience={handleAddExperience}
+          onRemoveEducation={onRemoveEducation}
+          onRemoveExperience={onRemoveExperience}
+          onRemoveTech={onRemoveTech}
+          handleProfileInputChange={handleProfileInputChange}
+          handleExperienceInputChange={handleExperienceInputChange}
+          handleEducationInputChange={handleEducationInputChange}
+          handleTechInputChange={handleTechInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+      <div className='preview-container'>
+        <Preview
+          profile={profile}
+          currentTech={currentTech}
+          techStack={techStack}
+          experiences={experiences}
+          educations={educations}
+        />
+      </div>
     </div>
   );
 };

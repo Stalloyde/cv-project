@@ -107,7 +107,7 @@ var EducationInputs = function (_a) {
 };
 var Form = function (_a) {
     var currentTech = _a.currentTech, techStack = _a.techStack, experience = _a.experience, experiences = _a.experiences, education = _a.education, educations = _a.educations, handleAddExperience = _a.handleAddExperience, handleAddEducation = _a.handleAddEducation, onRemoveExperience = _a.onRemoveExperience, onRemoveEducation = _a.onRemoveEducation, onRemoveTech = _a.onRemoveTech, handleProfileInputChange = _a.handleProfileInputChange, handleExperienceInputChange = _a.handleExperienceInputChange, handleEducationInputChange = _a.handleEducationInputChange, handleTechInputChange = _a.handleTechInputChange, handleSubmit = _a.handleSubmit;
-    return (React.createElement("div", { className: 'form-main-container' },
+    return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: 'form-profile-container' },
             React.createElement("h1", null, "Profile"),
             React.createElement(TextInput, { className: 'profile-input', label: 'First Name:', id: 'firstName', handleProfileInputChange: handleProfileInputChange }),

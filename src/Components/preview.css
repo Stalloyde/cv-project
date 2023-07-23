@@ -10,15 +10,6 @@
   --main-margin-bottom: 15px;
 }
 
-.preview-main-container {
-  display: grid;
-  background-color: rgba(0, 0, 0, 0.767);
-  margin: 10px;
-  grid-template-rows: 200px 1fr;
-  overflow-y: scroll;
-  height: 100vh;
-}
-
 .preview-content-container {
   display: grid;
   grid-template-columns: 0.3fr 1fr;
