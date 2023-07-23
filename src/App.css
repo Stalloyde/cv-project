@@ -6,6 +6,7 @@
 .form-container {
   flex-grow: 1;
   overflow-y: auto;
+  height: 100vh;
 }
 
 .preview-container {
@@ -15,4 +16,5 @@
   margin: 10px;
   grid-template-rows: 200px 1fr;
   overflow-y: scroll;
+  height: 100vh;
 }

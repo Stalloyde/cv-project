@@ -365,64 +365,66 @@ const Form: React.FC<FormProps> = ({
     <>
       <div className='form-profile-container'>
         <h1>Profile</h1>
-        <TextInput
-          className='profile-input'
-          label='First Name:'
-          id='firstName'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Last Name:'
-          id='lastName'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Current Position:'
-          id='currentPosition'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Email:'
-          id='email'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Contact Number:'
-          id='contactNumber'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Github:'
-          id='github'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='Portfolio Site:'
-          id='portfolio'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <TextInput
-          className='profile-input'
-          label='LinkedIn:'
-          id='linkedin'
-          handleProfileInputChange={handleProfileInputChange}
-        />
-        <label className='description input-container'>
-          Summary:
-          <textarea
+        <div className='form-profile-inputs-container'>
+          <TextInput
             className='profile-input'
-            id='summary'
-            placeholder='Insert short bio here'
-            maxLength={250}
-            onChange={handleProfileInputChange}
-          ></textarea>
-        </label>
+            label='First Name:'
+            id='firstName'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Last Name:'
+            id='lastName'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Current Position:'
+            id='currentPosition'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Email:'
+            id='email'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Contact Number:'
+            id='contactNumber'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Github:'
+            id='github'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='Portfolio Site:'
+            id='portfolio'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <TextInput
+            className='profile-input'
+            label='LinkedIn:'
+            id='linkedin'
+            handleProfileInputChange={handleProfileInputChange}
+          />
+          <label className='description input-container'>
+            Summary:
+            <textarea
+              className='profile-input'
+              id='summary'
+              placeholder='Insert short bio here'
+              maxLength={250}
+              onChange={handleProfileInputChange}
+            ></textarea>
+          </label>
+        </div>
       </div>
 
       <div className='form-tech-stack-container'>
