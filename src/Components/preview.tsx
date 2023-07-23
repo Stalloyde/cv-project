@@ -103,38 +103,38 @@ const Preview: React.FC<PreviewProps> = ({
       </section>
 
       <section className='preview-content-container'>
-        <div className='side-content-container'>
+        <section className='side-content-container'>
           <div className='preview-contact-info-container'>
-            <section className='contact-info'>
+            <div className='contact-info'>
               <h2> Email </h2>
               <p>{profile.email}</p>
-            </section>
-            <section className='contact-info'>
+            </div>
+            <div className='contact-info'>
               <h2> Contact Number </h2>
               <p>{profile.contactNumber}</p>
-            </section>
-            <section className='contact-info'>
+            </div>
+            <div className='contact-info'>
               <h2> Github </h2>
               <a href=''>{profile.github}</a>
-            </section>
-            <section className='contact-info'>
+            </div>
+            <div className='contact-info'>
               <h2> Portfolio </h2>
               <a href=''>{profile.portfolio}</a>
-            </section>
-            <section className='contact-info'>
+            </div>
+            <div className='contact-info'>
               <h2> LinkedIn </h2>
               <a href=''>{profile.linkedin}</a>
-            </section>
-            <section className='tech-stack-info'>
+            </div>
+            <div className='tech-stack-info'>
               <h2> Tech Stack </h2>
               <p>
                 {techStack.map(
                   (item) => item && <li key={item.id}> {item.text}</li>
                 )}
               </p>
-            </section>
+            </div>
           </div>
-        </div>
+        </section>
 
         <section className='main-content-container'>
           <section className='preview-experience-container'>
