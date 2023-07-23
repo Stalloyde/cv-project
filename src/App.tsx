@@ -288,8 +288,8 @@ const App = () => {
   };
 
   return (
-    <div className='main-container'>
-      <div className='form-container'>
+    <main className='main-container'>
+      <section className='form-container'>
         <Form
           currentTech={currentTech}
           techStack={techStack}
@@ -308,8 +308,8 @@ const App = () => {
           handleTechInputChange={handleTechInputChange}
           handleSubmit={handleSubmit}
         />
-      </div>
-      <div className='preview-container'>
+      </section>
+      <section className='preview-container'>
         <Preview
           profile={profile}
           currentTech={currentTech}
@@ -317,8 +317,8 @@ const App = () => {
           experiences={experiences}
           educations={educations}
         />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 export default App;

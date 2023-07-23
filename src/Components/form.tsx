@@ -92,6 +92,9 @@ interface FormProps {
   handleTechInputChange: (e: React.FormEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
+//SEPARATION INTERFACES FROM COMPONENTS
+//SEPARATION INTERFACES FROM COMPONENTS
+//SEPARATION INTERFACES FROM COMPONENTS
 
 const TextInput: React.FC<TextInputProps> = ({
   label,
@@ -224,7 +227,7 @@ const ExperienceInputs: React.FC<ExperienceInputsFormProps> = ({
   };
 
   return (
-    <div className='form-experience-inputs-container' id={id}>
+    <section className='form-experience-inputs-container' id={id}>
       <TextInput
         label='Position:'
         className='experience-input'
@@ -271,7 +274,7 @@ const ExperienceInputs: React.FC<ExperienceInputsFormProps> = ({
       <div className='remove-btn'>
         <button onClick={handleRemove}>Remove</button>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -292,7 +295,7 @@ const EducationInputs: React.FC<EducationInputsFormProps> = ({
   };
 
   return (
-    <div className='form-education-inputs-container' id={id}>
+    <section className='form-education-inputs-container' id={id}>
       <TextInput
         label='University:'
         id={`university-${id}`}
@@ -339,7 +342,7 @@ const EducationInputs: React.FC<EducationInputsFormProps> = ({
       <div className='remove-btn'>
         <button onClick={handleRemove}>Remove</button>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -362,8 +365,8 @@ const Form: React.FC<FormProps> = ({
   handleSubmit,
 }) => {
   return (
-    <>
-      <div className='form-profile-container'>
+    <main>
+      <section className='form-profile-container'>
         <h1>Profile</h1>
         <div className='form-profile-inputs-container'>
           <TextInput
@@ -425,9 +428,9 @@ const Form: React.FC<FormProps> = ({
             ></textarea>
           </label>
         </div>
-      </div>
+      </section>
 
-      <div className='form-tech-stack-container'>
+      <section className='form-tech-stack-container'>
         <h1>Technology Stack</h1>
         <TechStackForm
           currentTech={currentTech}
@@ -436,9 +439,9 @@ const Form: React.FC<FormProps> = ({
           handleSubmit={handleSubmit}
           onRemoveTech={onRemoveTech}
         />
-      </div>
+      </section>
 
-      <div className='form-experience-container'>
+      <section className='form-experience-container'>
         <h1>Professional Experiences</h1>
         {experiences.map(
           (item) =>
@@ -454,9 +457,9 @@ const Form: React.FC<FormProps> = ({
             )
         )}
         <button onClick={handleAddExperience}>Add Experience</button>
-      </div>
+      </section>
 
-      <div className='form-education-container'>
+      <section className='form-education-container'>
         <h1>Education</h1>
         {educations.map(
           (item) =>
@@ -472,8 +475,8 @@ const Form: React.FC<FormProps> = ({
             )
         )}
         <button onClick={handleAddEducation}>Add Education</button>
-      </div>
-    </>
+      </section>
+    </main>
   );
 };
 
