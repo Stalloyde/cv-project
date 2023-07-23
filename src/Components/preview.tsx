@@ -138,11 +138,11 @@ const Preview: React.FC<PreviewProps> = ({
 
         <section className='main-content-container'>
           <section className='preview-experience-container'>
-            <h1>Professional Experiences</h1>
+            <h2>Professional Experiences</h2>
             <PreviewExperience experiences={experiences} />
           </section>
           <section className='preview-education-container'>
-            <h1>Education</h1>
+            <h2>Education</h2>
             <PreviewEducation educations={educations} />
           </section>
         </section>

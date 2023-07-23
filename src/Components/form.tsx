@@ -367,7 +367,7 @@ const Form: React.FC<FormProps> = ({
   return (
     <main>
       <section className='form-profile-container'>
-        <h1>Profile</h1>
+        <h2>Profile</h2>
         <div className='form-profile-inputs-container'>
           <TextInput
             className='profile-input'
@@ -431,7 +431,7 @@ const Form: React.FC<FormProps> = ({
       </section>
 
       <section className='form-tech-stack-container'>
-        <h1>Technology Stack</h1>
+        <h2>Technology Stack</h2>
         <TechStackForm
           currentTech={currentTech}
           techStack={techStack}
@@ -442,7 +442,7 @@ const Form: React.FC<FormProps> = ({
       </section>
 
       <section className='form-experience-container'>
-        <h1>Professional Experiences</h1>
+        <h2>Professional Experiences</h2>
         {experiences.map(
           (item) =>
             item && (
@@ -460,7 +460,7 @@ const Form: React.FC<FormProps> = ({
       </section>
 
       <section className='form-education-container'>
-        <h1>Education</h1>
+        <h2>Education</h2>
         {educations.map(
           (item) =>
             item && (
