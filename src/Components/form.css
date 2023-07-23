@@ -27,14 +27,14 @@
 
 .form-profile-inputs-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .form-experience-inputs-container,
 .form-education-inputs-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding: var(--main-padding);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 0.5rem;
   outline: var(--main-outline);
   border-radius: var(--main-border-radius);
   margin-bottom: var(--main-margin-bottom);
@@ -51,8 +51,8 @@
 
 .input-container {
   display: grid;
-  grid-template-columns: min-content 100px;
-  padding: var(--main-padding);
+  grid-template-columns: min-content;
+  padding: 0.5rem;
 }
 
 .form-profile-inputs-container > .description,
@@ -60,19 +60,19 @@
 .form-education-inputs-container > .description {
   grid-column: 1/2;
   grid-template-columns: min-content;
-  padding: var(--main-padding);
+  padding: 0.5rem;
 }
 
 .tech-stack-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .tech-stack-container > li {
   position: relative;
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 120px;
   height: 2rem;
   list-style-type: square;
 }
@@ -91,7 +91,7 @@
 
 textarea {
   padding: var(--main-padding);
-  min-width: 18rem;
+  min-width: 15rem;
   min-height: 5rem;
   max-width: 100%;
   max-height: 100%;
