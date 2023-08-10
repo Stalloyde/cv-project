@@ -10,18 +10,5 @@ npm install -D babel-loader @babel/core @babel/preset-env webpack webpack webpac
 
 _To open the app in your local browser:_
 
-1. Compile .tsx files by going into the directory of the file and running:
-   npx tsc -jsx react 'file-name'.tsx
-
-This will update the corresponding .js file.
-
-2. run npm start
-
-_To stage, commit or any changes:_
-
-1. Compile .tsx files by going into the directory of the file and running:
-   npx tsc -jsx react 'file-name'.tsx
-
-This will update the corresponding .js file.
-
-2. Run the usual git add/commit
+Run:
+npm start
