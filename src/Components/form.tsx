@@ -7,7 +7,7 @@ import {
   ExperienceType,
   EducationsType,
   EducationType,
-} from '../App';
+} from '../App.js';
 
 interface TextInputProps {
   label: string;
