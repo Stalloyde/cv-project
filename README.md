@@ -1,5 +1,8 @@
 Generate a CV by simply filling in relevant information in the form provided.
-Originally written in React, and migrated to TypeScript with mobile responsiveness.
+Written in React TypeScript with mobile responsiveness. Hosted via Vercel.
+
+_Link to deploment page:_
+https://cv-project-self.vercel.app/
 
 _To use this repo:_
 
